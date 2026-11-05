@@ -11,7 +11,7 @@ export default function Title() {
         🐱🌿
       </div>
 
-      <div className="relative grid w-[15rem] place-items-center">
+      <div className="relative grid w-60 place-items-center">
         {/* Paw print, used as a window onto the plant photo */}
         <svg viewBox="0 0 200 190" className="col-start-1 row-start-1 w-full" aria-hidden="true">
           <defs>
@@ -23,13 +23,8 @@ export default function Title() {
               <path d="M100 82 C138 82 168 118 163 150 C159 176 132 180 100 169 C68 180 41 176 37 150 C32 118 62 82 100 82 Z" />
             </clipPath>
           </defs>
-          <image
-            href="/paw-plant.jpg"
-            width="200"
-            height="190"
-            preserveAspectRatio="xMidYMin slice"
-            clipPath="url(#paw)"
-          />
+          {/* Photo is 900x1600; scaled to 300x533 and shifted so the cactus fills the whole paw */}
+          <image href="/paw-plant.jpg" x="-50" y="-95" width="300" height="533" clipPath="url(#paw)" />
         </svg>
 
         <h1
@@ -41,7 +36,7 @@ export default function Title() {
       </div>
 
       {/* Roots growing down from the name */}
-      <svg viewBox="0 0 220 56" className="title-roots -mt-2 w-[13.75rem]" aria-hidden="true">
+      <svg viewBox="0 0 220 56" className="title-roots -mt-2 w-55" aria-hidden="true">
         <path pathLength="1" d="M110 0 C108 14 112 22 104 34 C98 43 100 50 94 56" />
         <path pathLength="1" d="M110 2 C114 16 126 20 132 32 C137 41 146 44 150 54" />
         <path pathLength="1" d="M106 10 C92 18 80 16 70 26 C62 34 52 34 44 42" />
