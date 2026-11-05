@@ -29,6 +29,9 @@ type SearchResult = {
   verdict: Verdict;
 };
 
+/** The page colour seen through the menu's 45% black overlay (light #eef1ea, dark #121812). */
+const DIMMED_THEME = { light: "#838581", dark: "#0a0d0a" };
+
 /** Chrome's install prompt event (not in TypeScript's built-in types yet). */
 type InstallPromptEvent = Event & {
   prompt: () => Promise<void>;
@@ -228,6 +231,19 @@ export default function Menu() {
       openMenu("search");
     }
   }, []);
+
+  // While the menu is open, Android's status/navigation bars would keep the normal page colour and show
+  // as a lighter strip next to the dimmed page. Android takes those bars' colour from <meta name="theme-color">,
+  // so we switch it to the dimmed colour while open and put it back when the menu closes.
+  useEffect(() => {
+    if (!open) return;
+    const metas = [...document.querySelectorAll<HTMLMetaElement>('meta[name="theme-color"]')];
+    const before = metas.map((m) => m.content);
+    metas.forEach((m) => {
+      m.content = (m.media ?? "").includes("dark") ? DIMMED_THEME.dark : DIMMED_THEME.light;
+    });
+    return () => metas.forEach((m, i) => (m.content = before[i]));
+  }, [open]);
 
   // Close with Escape, stop the page behind from scrolling, and move focus into the panel
   useEffect(() => {
