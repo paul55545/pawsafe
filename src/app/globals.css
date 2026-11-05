@@ -213,6 +213,20 @@ body {
   transform: rotate(24deg); /* rotated around its centre so the main branch lies along the line */
   transform-origin: center;
   pointer-events: none;
+  z-index: 2;
+}
+/* Cuts a gap in the box's top border behind the vine (in the page colour), so the line doesn't show
+   through the gaps between the curls; the vine's tip then flows back into the line on the right. */
+.vine-box::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: -5px; /* from just above the border down to its inner edge (positions start inside the border) */
+  width: 84px;
+  height: 5px;
+  background: var(--background);
+  pointer-events: none;
+  z-index: 1;
 }
 
 /* Leaf-cut corners for the verdict banner */
