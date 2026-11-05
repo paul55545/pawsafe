@@ -45,19 +45,23 @@ export default function PlantScanner() {
   const [photos, setPhotos] = useState<Photo[]>([]);
   const [result, setResult] = useState<{ candidates: Candidate[]; verdict: Verdict } | null>(null);
   const [loading, setLoading] = useState(false);
+  const [preparing, setPreparing] = useState(false); // shrinking + checking a new photo
   const [error, setError] = useState<string | null>(null);
 
   async function addPhoto(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     e.target.value = ""; // allow picking the same file again
     if (!file) return;
+    setPreparing(true);
+    setResult(null);
+    setError(null);
     try {
       const photo = await preparePhoto(file);
       setPhotos((p) => [...p, photo].slice(0, MAX_PHOTOS));
-      setResult(null);
-      setError(null);
     } catch {
       setError("Could not read that photo. Please try again.");
+    } finally {
+      setPreparing(false);
     }
   }
 
@@ -95,7 +99,7 @@ export default function PlantScanner() {
   return (
     <div className="flex w-full max-w-md flex-col gap-4">
       {/* Photo thumbnails (tap ✕ to remove) */}
-      {photos.length > 0 && (
+      {(photos.length > 0 || preparing) && (
         <div className="flex gap-2">
           {photos.map((p, i) => (
             <div key={p.url} className="relative">
@@ -114,6 +118,17 @@ export default function PlantScanner() {
               </button>
             </div>
           ))}
+          {/* Placeholder tile with a spinning leaf while the new photo is being prepared */}
+          {preparing && (
+            <div
+              role="status"
+              aria-label="Preparing photo"
+              className="flex h-24 w-24 animate-pulse flex-col items-center justify-center gap-1 rounded-xl bg-green-100 text-green-800 dark:bg-green-950 dark:text-green-200"
+            >
+              <span className="animate-spin text-3xl [animation-duration:1.6s]">🌿</span>
+              <span className="text-xs">Preparing…</span>
+            </div>
+          )}
         </div>
       )}
 
@@ -125,14 +140,14 @@ export default function PlantScanner() {
       )}
 
       {/* Camera button: a hidden file input; capture="environment" opens the back camera */}
-      {photos.length < MAX_PHOTOS && (
+      {photos.length < MAX_PHOTOS && !preparing && (
         <label className="flex h-14 cursor-pointer items-center justify-center rounded-2xl bg-green-700 px-4 text-center text-lg font-semibold text-white active:bg-green-800">
           📷 {photos.length === 0 ? "Take a photo of the plant" : "Add another angle (optional)"}
           <input type="file" accept="image/*" capture="environment" onChange={addPhoto} className="hidden" />
         </label>
       )}
 
-      {photos.length > 0 && !result && (
+      {photos.length > 0 && !result && !preparing && (
         <button
           onClick={identify}
           disabled={loading}
