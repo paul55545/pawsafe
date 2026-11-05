@@ -225,6 +225,11 @@ export default function PlantScanner() {
               </div>
             </div>
             <p className="mt-2">{v.message}</p>
+            {v.cactusNote && (
+              <p className="mt-2 rounded-lg border border-current/20 bg-white/50 p-2 text-sm dark:bg-black/10">
+                🌵 {v.cactusNote}
+              </p>
+            )}
             {v.severe && (
               <p className="mt-2 rounded-lg bg-red-700 p-2 font-semibold text-white">
                 🚨 Lilies are extremely dangerous to cats. Even pollen or vase water can cause fatal kidney failure. If

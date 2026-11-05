@@ -76,4 +76,6 @@ export type Verdict = {
   effects: (Effects & { plantName: string }) | null;
   /** Set when care/effects are general info for the genus, borrowed from its ASPCA-listed toxic member. */
   genusInfo: { genus: string; basedOn: string; confidence: number } | null;
+  /** "Probably safe" note for spiny true cacti that ASPCA doesn't list (never turns the verdict green). */
+  cactusNote: string | null;
 };

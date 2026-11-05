@@ -12,6 +12,8 @@ const c = (scientificName: string, score: number, commonName = ""): Candidate =>
   score,
 });
 
+const cactus = (scientificName: string, score: number): Candidate => ({ ...c(scientificName, score), family: "Cactaceae" });
+
 // Same dataset, but pretending every row was human-checked (to test the "safe" path).
 const verifiedIndex = buildIndex(plants.map((p) => ({ ...p, humanVerified: true })));
 // And a copy where no row is human-checked yet (to test that unverified rows never say "safe").
@@ -168,6 +170,21 @@ describe("verdict: never 'safe' when unsure", () => {
 });
 
 describe("verdict: my real cactus photos (Pl@ntNet output, 2026-11-05)", () => {
+  it("spiny cactus not on ASPCA list -> 'Probably low risk' note, but never green", () => {
+    const v = evaluate([cactus("Kroenleinia grusonii", 0.602)], verifiedIndex);
+    expect(v.level).toBe("unknown");
+    expect(v.title).toBe("Probably low risk: a spiny cactus");
+    expect(v.cactusNote).toMatch(/Probably safe/);
+  });
+
+  it("no cactus note for peyote, spineless cacti, Euphorbia lookalikes, or with a toxic lookalike", () => {
+    expect(evaluate([cactus("Lophophora williamsii", 0.9)]).cactusNote).toBeNull(); // mescaline
+    expect(evaluate([cactus("Echinopsis pachanoi", 0.9)]).cactusNote).toBeNull(); // San Pedro
+    expect(evaluate([cactus("Rhipsalis baccifera", 0.9)]).cactusNote).toBeNull(); // spineless
+    expect(evaluate([{ ...cactus("Euphorbia trigona", 0.9), family: "Euphorbiaceae" }]).cactusNote).toBeNull();
+    expect(evaluate([cactus("Kroenleinia grusonii", 0.6), c("Euphorbia tirucalli", 0.2)]).cactusNote).toBeNull();
+  });
+
   it("golden barrel (60%) -> identified, but not on ASPCA list", () => {
     const v = evaluate([c("Kroenleinia grusonii", 0.602), c("Eriosyce subgibbosa", 0.013), c("Echinocereus coccineus", 0.004)], verifiedIndex);
     expect(v.level).toBe("unknown");

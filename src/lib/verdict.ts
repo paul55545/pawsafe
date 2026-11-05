@@ -46,6 +46,27 @@ const PHOTO_TIP =
 
 const TREAT_AS_TOXIC = "Until you can confirm it, treat this plant as potentially toxic and keep it away from your cat.";
 
+// Spiny true cacti that ASPCA doesn't list get a "probably low risk" note: not known to be poisonous,
+// and cats rarely bite into spines. Excluded: spineless cacti (the spines are the whole argument) and
+// mescaline-containing cacti (peyote, San Pedro / Peruvian torch). Cactus lookalikes such as Euphorbia
+// are a different family, so they never get the note.
+const SPINELESS_CACTUS_GENERA = new Set(["schlumbergera", "rhipsalis", "epiphyllum", "hatiora", "rhipsalidopsis", "lepismium"]);
+const PSYCHOACTIVE_CACTUS_GENERA = new Set(["lophophora", "trichocereus"]);
+const PSYCHOACTIVE_CACTUS_SPECIES = new Set(["echinopsis pachanoi", "echinopsis peruviana", "echinopsis lageniformis"]);
+export const CACTUS_NOTE =
+  "Probably safe: this cactus isn't known to be poisonous, and most cats won't bite into spines. " +
+  "The spines themselves can still hurt your cat's mouth, paws or eyes, so keep it out of reach of curious kittens.";
+
+function isSpinyNonPsychoactiveCactus(c: Candidate): boolean {
+  if (c.family.toLowerCase() !== "cactaceae") return false;
+  const genus = genusKey(c.scientificName);
+  return (
+    !SPINELESS_CACTUS_GENERA.has(genus) &&
+    !PSYCHOACTIVE_CACTUS_GENERA.has(genus) &&
+    !PSYCHOACTIVE_CACTUS_SPECIES.has(speciesKey(c.scientificName))
+  );
+}
+
 export function evaluate(candidates: Candidate[], index: PlantIndex = plantIndex): Verdict {
   if (candidates.length === 0) {
     return {
@@ -60,6 +81,7 @@ export function evaluate(candidates: Candidate[], index: PlantIndex = plantIndex
       aspca: null,
       effects: null,
       genusInfo: null,
+      cactusNote: null,
     };
   }
 
@@ -110,7 +132,8 @@ export function evaluate(candidates: Candidate[], index: PlantIndex = plantIndex
   const effects =
     effectsOf(top.entry?.toxicToCats && top.kind !== "toxic-relative" ? top : toxicAlert) ??
     (genusInfo && relative?.entry?.effects ? { ...relative.entry.effects, plantName: relative.entry.commonName } : null);
-  const base = { plant, severe, care, aspca, effects, genusInfo, photoTip: confident ? null : PHOTO_TIP };
+  const cactusNote = !toxicAlert && isSpinyNonPsychoactiveCactus(top.top) ? CACTUS_NOTE : null;
+  const base = { plant, severe, care, aspca, effects, genusInfo, cactusNote, photoTip: confident ? null : PHOTO_TIP };
   const GENUS_NOTE = genusInfo
     ? ` Plants in the same genus usually contain the same irritants, so the ${genusInfo.genus} info below is a good guide.`
     : "";
@@ -160,7 +183,7 @@ export function evaluate(candidates: Candidate[], index: PlantIndex = plantIndex
       ...base,
       level: "unknown",
       reason: "not-in-dataset",
-      title: "Not in our safety database",
+      title: base.cactusNote ? "Probably low risk: a spiny cactus" : "Not in our safety database",
       message: `This looks like ${top.top.scientificName}, but it isn't in our ASPCA-based database yet. ${TREAT_AS_TOXIC}`,
     };
   }
@@ -170,7 +193,7 @@ export function evaluate(candidates: Candidate[], index: PlantIndex = plantIndex
       ...base,
       level: "unknown",
       reason: "not-listed",
-      title: "Not on the ASPCA list",
+      title: base.cactusNote ? "Probably low risk: a spiny cactus" : "Not on the ASPCA list",
       message: `This looks like ${top.entry.commonName}. ASPCA doesn't list it as toxic or non-toxic. ${top.entry.note ?? ""} ${TREAT_AS_TOXIC}`
         .replace(/\s+/g, " ")
         .trim(),

@@ -68,3 +68,8 @@ Accounts, saved plant collections, watering reminders, disease diagnosis, offlin
 
 ### Dataset verified by a human (2026-11-05)
 - I checked all 43 rows of plants.json against the ASPCA website myself: all accurate, no changes needed. All rows are now marked humanVerified, which unlocks the green "Non-toxic" verdict. A test guards that unverified rows still can't say "Safe".
+
+### "Probably low risk" note for spiny cacti
+- Cacti ASPCA doesn't list (like my golden barrel and rat tail) now say "Probably low risk: a spiny cactus", with a note: probably safe, not known to be poisonous, and most cats won't bite into spines; the spines can still injure mouth, paws or eyes.
+- The verdict stays amber, never green: "probably safe" is a judgement, not an ASPCA record.
+- Excluded: spineless cacti (Christmas/mistletoe cactus: the spine argument doesn't apply), mescaline cacti (peyote, San Pedro), cactus lookalikes like Euphorbia (different family), and any result with a toxic plant among the likely matches.
