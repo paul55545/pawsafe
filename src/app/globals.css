@@ -33,7 +33,7 @@
     --peat: #c7a983;
     --on-leaf: #f3f8ef;
     --logo-ink: #d2e943;
-    --vine: #b9cf4a;
+    --vine: #3d6b33; /* muted dark green, so the ornaments don't pop on the dark page */
     --backdrop-opacity: 0.16;
   }
 }
@@ -200,33 +200,20 @@ body {
   position: relative;
   margin-top: 1.5rem;
 }
+/* The vine artwork was straightened (scripted, column by column) so its main branch is perfectly
+   horizontal. At 96px wide the branch runs from 21px to 26px down the ornament, so top: -25px puts
+   it right over the box's 1-2px top border, covering the line along its whole length. */
 .vine-box::before {
   content: "";
   position: absolute;
   left: 8px;
-  bottom: 100%;
+  top: -25px; /* measured from the inside of the border */
   width: 96px;
-  height: 40px;
-  margin-bottom: -18px; /* main branch rests on the box's top edge, without dipping into the box */
+  height: 39px;
   background: var(--vine);
-  mask: url("/brand/vine-mask.png") center / contain no-repeat;
-  transform: rotate(24deg); /* rotated around its centre so the main branch lies along the line */
-  transform-origin: center;
+  mask: url("/brand/vine-straight-mask.png") left top / 100% 100% no-repeat;
   pointer-events: none;
   z-index: 2;
-}
-/* Cuts a gap in the box's top border behind the vine (in the page colour), so the line doesn't show
-   through the gaps between the curls; the vine's tip then flows back into the line on the right. */
-.vine-box::after {
-  content: "";
-  position: absolute;
-  left: 4px;
-  top: -5px; /* from just above the border down to its inner edge (positions start inside the border) */
-  width: 104px; /* reaches past the vine's thin tip */
-  height: 5px;
-  background: var(--background);
-  pointer-events: none;
-  z-index: 1;
 }
 
 /* Leaf-cut corners for the verdict banner */
