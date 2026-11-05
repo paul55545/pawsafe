@@ -17,15 +17,18 @@ export async function POST(request: Request) {
     return Response.json({ error: "Server is missing PLANTNET_API_KEY" }, { status: 500 });
   }
 
+  // Accept 1-5 photos of the SAME plant; Pl@ntNet combines them for a better answer.
   const form = await request.formData();
-  const image = form.get("image");
-  if (!(image instanceof Blob)) {
+  const images = form.getAll("image").filter((v): v is File => v instanceof Blob).slice(0, 5);
+  if (images.length === 0) {
     return Response.json({ error: "No image uploaded" }, { status: 400 });
   }
 
   const body = new FormData();
-  body.append("images", image, "plant.jpg");
-  body.append("organs", "auto");
+  images.forEach((img, i) => {
+    body.append("images", img, `plant-${i}.jpg`);
+    body.append("organs", "auto");
+  });
 
   const url = `${PLANTNET_URL}?api-key=${apiKey}&lang=en&nb-results=5&include-related-images=false`;
   const res = await fetch(url, { method: "POST", body });
