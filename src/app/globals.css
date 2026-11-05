@@ -1,26 +1,162 @@
 @import "tailwindcss";
 
+/* PawSafe palette: moss, fern and peat (soil), with slightly green-tinted neutrals. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --background: #eef1ea;
+  --foreground: #1c271d;
+  --muted: #5f6b5f;
+  --card: #fbfcf8;
+  --line: #d3dacb;
+  --moss: #2f5d34;
+  --moss-deep: #1f4224;
+  --fern: #5e8c45;
+  --leaf-wash: #dcead0;
+  --peat: #5a4632;
+  --on-leaf: #fbfcf8;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    --background: #121812;
+    --foreground: #e4ebdf;
+    --muted: #9aa797;
+    --card: #1a221a;
+    --line: #2e3a2d;
+    --moss: #3f7a45;
+    --moss-deep: #a6d295;
+    --fern: #5f8f47;
+    --leaf-wash: #233322;
+    --peat: #c7a983;
+    --on-leaf: #f3f8ef;
   }
+}
+
+/* Makes the colors usable as Tailwind classes, e.g. bg-moss, text-peat, border-line */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-line: var(--line);
+  --color-moss: var(--moss);
+  --color-moss-deep: var(--moss-deep);
+  --color-fern: var(--fern);
+  --color-leaf-wash: var(--leaf-wash);
+  --color-peat: var(--peat);
+  --font-sans: var(--font-figtree);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-figtree), system-ui, sans-serif;
+}
+
+/* ---------- The two-part leaf button ----------
+   Top half  = "Take a photo" (dark upper side of a leaf)
+   Bottom half = "Identify" (lighter underside), grows out when photos are ready.
+   The 4px gap between them is the leaf's central vein; a small stem sits at the left tip.
+   Each half is an ellipse clipped so its ends meet the vein at a point, like a real leaf tip. */
+.leaf {
+  --half: 76px;
+  position: relative;
+  display: grid;
+  gap: 4px;
+  width: 100%;
+  max-width: 22rem;
+  margin-inline: auto;
+}
+.leaf-stem {
+  position: absolute;
+  left: -20px;
+  top: calc(var(--half) - 10px);
+  width: 24px;
+  height: 12px;
+  border-bottom: 3px solid var(--peat);
+  border-bottom-left-radius: 100% 100%;
+  pointer-events: none;
+}
+.leaf-half {
+  height: var(--half);
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  border: 0;
+  color: var(--on-leaf);
+  font-weight: 700;
+  font-size: 1.05rem;
+  cursor: pointer;
+  transition: filter 0.15s ease, transform 0.1s ease;
+}
+.leaf-top {
+  align-items: flex-end;
+  padding-bottom: 16px;
+  clip-path: ellipse(57.7% 200% at 50% 200%);
+  background:
+    repeating-linear-gradient(-55deg, transparent 0 34px, rgb(255 255 255 / 0.07) 34px 36px),
+    var(--moss);
+}
+.leaf-bottom {
+  align-items: flex-start;
+  padding-top: 16px;
+  clip-path: ellipse(57.7% 200% at 50% -100%);
+  background:
+    repeating-linear-gradient(55deg, transparent 0 34px, rgb(255 255 255 / 0.08) 34px 36px),
+    var(--fern);
+  transform-origin: top;
+  animation: leaf-grow 0.35s ease-out;
+}
+.leaf-half:hover:not(:disabled) {
+  filter: brightness(1.12);
+}
+.leaf-half:active:not(:disabled) {
+  transform: scale(0.98);
+}
+/* The clip-path hides normal focus outlines, so focus is shown inside the shape */
+.leaf-half:focus-visible {
+  outline: none;
+  filter: brightness(1.25);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.leaf-half:disabled {
+  cursor: default;
+  filter: saturate(0.6);
+  opacity: 0.75;
+}
+@keyframes leaf-grow {
+  from {
+    transform: scaleY(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+/* Small leaf used as the "preparing photo" spinner */
+.leaf-spinner {
+  width: 22px;
+  height: 22px;
+  border-radius: 0 100% 0 100%;
+  background: var(--fern);
+  animation: leaf-spin 1.4s ease-in-out infinite;
+}
+@keyframes leaf-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Leaf-cut corners for the verdict banner */
+.leaf-corners {
+  border-radius: 22px 4px 22px 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .leaf-bottom,
+  .leaf-spinner {
+    animation: none;
+  }
 }

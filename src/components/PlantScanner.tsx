@@ -35,6 +35,15 @@ async function preparePhoto(file: File): Promise<Photo> {
   return { blob, url: URL.createObjectURL(blob), warning: quality.warning };
 }
 
+function CameraIcon() {
+  return (
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+      <path d="M4 8h3l2-3h6l2 3h3v11H4z" />
+      <circle cx="12" cy="13" r="3.5" />
+    </svg>
+  );
+}
+
 const LEVEL_STYLE = {
   safe: { box: "bg-green-100 text-green-900 border-green-600", icon: "✅" },
   toxic: { box: "bg-red-100 text-red-900 border-red-600", icon: "☠️" },
@@ -123,9 +132,9 @@ export default function PlantScanner() {
             <div
               role="status"
               aria-label="Preparing photo"
-              className="flex h-24 w-24 animate-pulse flex-col items-center justify-center gap-1 rounded-xl bg-green-100 text-green-800 dark:bg-green-950 dark:text-green-200"
+              className="flex h-24 w-24 animate-pulse flex-col items-center justify-center gap-2 rounded-xl bg-leaf-wash text-moss-deep"
             >
-              <span className="animate-spin text-3xl [animation-duration:1.6s]">🌿</span>
+              <span className="leaf-spinner" />
               <span className="text-xs">Preparing…</span>
             </div>
           )}
@@ -139,30 +148,35 @@ export default function PlantScanner() {
         </p>
       )}
 
-      {/* Camera button: a hidden file input; capture="environment" opens the back camera */}
-      {photos.length < MAX_PHOTOS && !preparing && (
-        <label className="flex h-14 cursor-pointer items-center justify-center rounded-2xl bg-green-700 px-4 text-center text-lg font-semibold text-white active:bg-green-800">
-          📷 {photos.length === 0 ? "Take a photo of the plant" : "Add another angle (optional)"}
-          <input type="file" accept="image/*" capture="environment" onChange={addPhoto} className="hidden" />
-        </label>
-      )}
+      {/* The leaf: top half = camera, bottom half = Identify (appears once there's a photo).
+          The camera "button" is a label around a hidden file input; capture="environment" opens the back camera. */}
+      <div className="leaf my-2">
+        <span className="leaf-stem" aria-hidden="true" />
+        {photos.length < MAX_PHOTOS && !preparing ? (
+          <label className="leaf-half leaf-top">
+            <CameraIcon />
+            {photos.length === 0 ? "Take a photo of the plant" : "Add another angle"}
+            <input type="file" accept="image/*" capture="environment" onChange={addPhoto} className="hidden" />
+          </label>
+        ) : (
+          <button type="button" className="leaf-half leaf-top" disabled>
+            {preparing ? "Preparing photo…" : `${MAX_PHOTOS} photos added`}
+          </button>
+        )}
 
-      {photos.length > 0 && !result && !preparing && (
-        <button
-          onClick={identify}
-          disabled={loading}
-          className="h-14 rounded-2xl bg-zinc-900 text-lg font-semibold text-white disabled:opacity-50 dark:bg-zinc-100 dark:text-zinc-900"
-        >
-          {loading ? "Identifying…" : `🔍 Identify (${photos.length} photo${photos.length > 1 ? "s" : ""})`}
-        </button>
-      )}
+        {photos.length > 0 && !result && (
+          <button type="button" onClick={identify} disabled={loading || preparing} className="leaf-half leaf-bottom">
+            {loading ? "Identifying…" : `Identify (${photos.length} photo${photos.length > 1 ? "s" : ""})`}
+          </button>
+        )}
+      </div>
 
       {error && <p className="rounded-xl bg-red-100 p-3 text-red-800">{error}</p>}
 
       {v && (
         <>
           {/* The verdict banner */}
-          <section className={`rounded-2xl border-2 p-4 ${LEVEL_STYLE[v.level].box}`}>
+          <section className={`leaf-corners border-2 p-4 ${LEVEL_STYLE[v.level].box}`}>
             <h2 className="text-xl font-bold">
               {LEVEL_STYLE[v.level].icon} {v.title}
             </h2>
@@ -185,7 +199,7 @@ export default function PlantScanner() {
           {v.photoTip && (
             <p className="rounded-xl bg-sky-100 p-3 text-sky-900">
               💡 {v.photoTip}
-              {photos.length < MAX_PHOTOS && " Use the green button above to add a photo, then identify again."}
+              {photos.length < MAX_PHOTOS && " Tap “Add another angle” above, then identify again."}
             </p>
           )}
 
@@ -278,7 +292,7 @@ export default function PlantScanner() {
       )}
 
       {photos.length > 0 && (
-        <button onClick={reset} className="text-zinc-500 underline">
+        <button onClick={reset} className="font-semibold text-moss underline underline-offset-4">
           Start over
         </button>
       )}
