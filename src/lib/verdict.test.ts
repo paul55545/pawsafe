@@ -126,6 +126,28 @@ describe("verdict: never 'safe' when unsure", () => {
     expect(v.reason).toBe("possible-toxic");
   });
 
+  it("unlisted Monstera at >= 40% -> 'Likely toxic' with general Monstera care + dangers", () => {
+    const v = evaluate([c("Monstera adansonii", 0.48), c("Philodendron hederaceum", 0.05)]);
+    expect(v.level).toBe("unknown"); // never upgraded to a confident verdict
+    expect(v.title).toBe("Likely toxic: a Monstera");
+    expect(v.genusInfo?.basedOn).toMatch(/Swiss cheese/);
+    expect(v.effects?.toxicPrinciples).toBe("Insoluble calcium oxalates");
+    expect(v.care).not.toBeNull();
+  });
+
+  it("unlisted Monstera below 40% -> plain 'Possibly toxic', no general genus info", () => {
+    const v = evaluate([c("Monstera adansonii", 0.3)]);
+    expect(v.title).toBe("Possibly toxic");
+    expect(v.genusInfo).toBeNull();
+    expect(v.care).toBeNull();
+  });
+
+  it("genus info never makes anything safe (non-toxic genus relatives are ignored)", () => {
+    const v = evaluate([c("Haworthiopsis attenuata", 0.9)], verifiedIndex);
+    expect(v.level).toBe("unknown");
+    expect(v.genusInfo).toBeNull();
+  });
+
   it("Goeppertia (renamed Calathea) is NOT assumed safe", () => {
     const v = evaluate([c("Goeppertia orbifolia", 0.9)], verifiedIndex);
     expect(v.level).toBe("unknown");

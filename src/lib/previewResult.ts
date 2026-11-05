@@ -24,6 +24,7 @@ export const previewResult: { candidates: Candidate[]; verdict: Verdict } = {
       difficulty: "Easy",
     },
     aspca: "Golden Pothos | Epipremnum aureum | Araceae",
+    genusInfo: null,
     effects: {
       plantName: "Golden pothos",
       toxicPrinciples: "Insoluble calcium oxalates",

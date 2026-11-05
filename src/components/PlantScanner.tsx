@@ -46,6 +46,16 @@ function CameraIcon() {
   );
 }
 
+/** Explains that a card shows general info for the genus, borrowed from its ASPCA-listed member. */
+function GenusNote({ info }: { info: NonNullable<Verdict["genusInfo"]> }) {
+  return (
+    <p className="mt-1 text-xs text-muted">
+      {Math.round(info.confidence * 100)}% likely to be a {info.genus}. This exact species isn&apos;t on the ASPCA
+      list, so this is based on {info.basedOn}, the {info.genus} that ASPCA does list.
+    </p>
+  );
+}
+
 const LEVEL_STYLE = {
   safe: { box: "bg-green-100 text-green-900 border-green-600", icon: "✅" },
   toxic: { box: "bg-red-100 text-red-900 border-red-600", icon: "☠️" },
@@ -231,7 +241,10 @@ export default function PlantScanner() {
           {/* Care card */}
           {v.care && v.plant && (
             <section className="vine-box rounded-2xl border border-line bg-card p-4">
-              <h3 className="font-semibold">🌱 Care for {v.plant.commonName}</h3>
+              <h3 className="font-semibold">
+                🌱 Care for {v.genusInfo ? `${v.genusInfo.genus} plants (general)` : v.plant.commonName}
+              </h3>
+              {v.genusInfo && <GenusNote info={v.genusInfo} />}
               <dl className="mt-2 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-sm">
                 <dt>☀️ Light</dt>
                 <dd>{v.care.light}</dd>
@@ -255,9 +268,12 @@ export default function PlantScanner() {
           {v.effects && (
             <section className="vine-box rounded-2xl border-2 border-red-300 bg-card p-4 dark:border-red-800">
               <h3 className="font-semibold">
-                🩺 {v.level === "toxic" ? "" : "If it is "}
-                {v.effects.plantName}: effects on cats
+                🩺{" "}
+                {v.genusInfo
+                  ? `${v.genusInfo.genus} plants in general: effects on cats`
+                  : `${v.level === "toxic" ? "" : "If it is "}${v.effects.plantName}: effects on cats`}
               </h3>
+              {v.genusInfo && <GenusNote info={v.genusInfo} />}
               <dl className="mt-2 flex flex-col gap-2 text-sm">
                 {v.effects.toxicPrinciples && (
                   <div>

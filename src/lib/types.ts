@@ -74,4 +74,6 @@ export type Verdict = {
   aspca: string | null;
   /** Symptoms etc. of the toxic plant this verdict is about (the confident match or the possible lookalike). */
   effects: (Effects & { plantName: string }) | null;
+  /** Set when care/effects are general info for the genus, borrowed from its ASPCA-listed toxic member. */
+  genusInfo: { genus: string; basedOn: string; confidence: number } | null;
 };

@@ -203,15 +203,15 @@ body {
 .vine-box::before {
   content: "";
   position: absolute;
-  left: 20px;
+  left: 8px;
   bottom: 100%;
   width: 96px;
   height: 40px;
-  margin-bottom: -7px;
+  margin-bottom: -22px; /* centre of the ornament sits on the box's top line */
   background: var(--vine);
-  mask: url("/brand/vine-mask.png") left bottom / contain no-repeat;
-  transform: rotate(17deg);
-  transform-origin: left bottom;
+  mask: url("/brand/vine-mask.png") center / contain no-repeat;
+  transform: rotate(24deg); /* rotated around its centre so the main branch lies along the line */
+  transform-origin: center;
   pointer-events: none;
 }
 

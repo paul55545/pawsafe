@@ -54,3 +54,8 @@ Accounts, saved plant collections, watering reminders, disease diagnosis, offlin
 - Toxic plants now show **what causes it, the symptoms, and how serious it is**, quoted from each plant's own ASPCA page (19 pages fetched), with a link to the source.
 - Deliberately **no "X grams = Y effect" numbers**: ASPCA doesn't publish them, and inventing doses would be unsafe. Seriousness is only shown where ASPCA states it (e.g. lilies: "death is possible"; poinsettia: "generally over-rated in toxicity").
 - For a "possibly toxic" result, the app shows the symptoms of the toxic lookalike ("If it is Snake plant…").
+
+### Genus-level "general info" (e.g. an unlisted Monstera)
+- Real test: my Monstera adansonii photo came back 48% *Monstera adansonii*, which ASPCA doesn't list, while *Monstera deliciosa* is listed as toxic.
+- If the candidates for a genus add up to ≥ 40% and that genus has an ASPCA-listed **toxic** member, the app now says **"Likely toxic: a Monstera"** and shows that member's care info and dangers, clearly labelled as general genus info.
+- Only at genus level, and only in the warning direction. Same-genus plants usually share their irritants (all Monstera contain calcium oxalate), but not always (ASPCA lists *Aloe vera* as toxic and *Aloe retusa* as non-toxic), and families are far too broad. So genus info is never used to call a plant safe, and the verdict is never upgraded to a confident "Toxic".
