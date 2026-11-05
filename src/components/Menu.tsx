@@ -66,7 +66,7 @@ const BADGE = {
   severe: "bg-red-700 text-white",
 } as const;
 
-/** Highlighter colour from the plant's actual rating (not just its position), so a toxic plant is never
+/** Bookmark colour from the plant's actual rating (not just its position), so a toxic plant is never
  *  marked green even if it happens to be first. Hue 120 = green ... 0 = red; null = neutral grey. */
 function highlightHue(r: ScanRecord, tab: Tab): number | null {
   if (tab === "safest") return Math.round(120 - (Math.min(safetyRank(r), MAX_SAFETY_RANK) / MAX_SAFETY_RANK) * 120);
@@ -76,7 +76,19 @@ function highlightHue(r: ScanRecord, tab: Tab): number | null {
 
 function PlantRow({ r, rank, showTime, hue }: { r: ScanRecord; rank?: number; showTime: boolean; hue?: number | null }) {
   return (
-    <li className="flex items-center gap-3 py-3">
+    <li className="relative flex items-center gap-3 py-3">
+      {/* Bookmark ribbon in the top-right corner, coloured green (best) to red (worst) */}
+      {hue !== undefined && (
+        <svg
+          viewBox="0 0 14 20"
+          className="absolute right-1 top-0 h-6 w-[1.05rem]"
+          aria-hidden="true"
+          style={{ color: hue === null ? "hsl(0 0% 55%)" : `hsl(${hue} 65% 45%)` }}
+        >
+          <path d="M0 0h14v20l-7-5.5L0 20z" fill="currentColor" />
+          <path d="M3 0v14" stroke="white" strokeOpacity="0.25" strokeWidth="1" />
+        </svg>
+      )}
       {rank !== undefined && (
         <span className="w-6 flex-none text-center text-sm font-bold tabular-nums text-muted">{rank}</span>
       )}
@@ -89,18 +101,7 @@ function PlantRow({ r, rank, showTime, hue }: { r: ScanRecord; rank?: number; sh
         </span>
       )}
       <div className="min-w-0 flex-1">
-        <p className="truncate font-semibold">
-          {hue !== undefined ? (
-            <mark
-              className={`highlighter ${hue === null ? "is-neutral" : ""}`}
-              style={hue === null ? undefined : ({ "--hl-hue": hue } as React.CSSProperties)}
-            >
-              {r.commonName}
-            </mark>
-          ) : (
-            r.commonName
-          )}
-        </p>
+        <p className={`truncate font-semibold ${hue !== undefined ? "pr-6" : ""}`}>{r.commonName}</p>
         <p className="truncate text-xs italic text-muted">{r.scientificName}</p>
         <div className="mt-1 flex flex-wrap gap-1 text-xs">
           <span className={`rounded-full px-2 py-0.5 font-medium ${BADGE[r.severe ? "severe" : r.level]}`}>
