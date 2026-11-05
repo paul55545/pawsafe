@@ -207,7 +207,7 @@ body {
   bottom: 100%;
   width: 96px;
   height: 40px;
-  margin-bottom: -22px; /* centre of the ornament sits on the box's top line */
+  margin-bottom: -18px; /* main branch rests on the box's top edge, without dipping into the box */
   background: var(--vine);
   mask: url("/brand/vine-mask.png") center / contain no-repeat;
   transform: rotate(24deg); /* rotated around its centre so the main branch lies along the line */
@@ -222,7 +222,7 @@ body {
   position: absolute;
   left: 4px;
   top: -5px; /* from just above the border down to its inner edge (positions start inside the border) */
-  width: 84px;
+  width: 104px; /* reaches past the vine's thin tip */
   height: 5px;
   background: var(--background);
   pointer-events: none;
