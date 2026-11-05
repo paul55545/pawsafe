@@ -1,15 +1,10 @@
 // Server-side only: this code runs on Vercel, never in the browser.
 // The phone uploads a photo here; we add the secret API key and ask Pl@ntNet.
 
-const PLANTNET_URL = "https://my-api.plantnet.org/v2/identify/all";
+import type { Candidate } from "@/lib/types";
+import { evaluate } from "@/lib/verdict";
 
-export type Candidate = {
-  scientificName: string; // e.g. "Epipremnum aureum" (no author)
-  genus: string;
-  family: string;
-  commonNames: string[];
-  score: number; // 0..1, Pl@ntNet's confidence for this species
-};
+const PLANTNET_URL = "https://my-api.plantnet.org/v2/identify/all";
 
 export async function POST(request: Request) {
   const apiKey = process.env.PLANTNET_API_KEY;
@@ -35,7 +30,7 @@ export async function POST(request: Request) {
 
   // Pl@ntNet answers 404 when it can't recognise any plant in the photo.
   if (res.status === 404) {
-    return Response.json({ candidates: [] });
+    return Response.json({ candidates: [], verdict: evaluate([]) });
   }
   if (!res.ok) {
     console.error("Pl@ntNet error", res.status, await res.text());
@@ -61,5 +56,6 @@ export async function POST(request: Request) {
     }),
   );
 
-  return Response.json({ candidates });
+  // The safety decision is made here on the server, from the curated dataset — not by the AI.
+  return Response.json({ candidates, verdict: evaluate(candidates) });
 }
