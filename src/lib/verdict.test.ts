@@ -14,8 +14,14 @@ const c = (scientificName: string, score: number, commonName = ""): Candidate =>
 
 // Same dataset, but pretending every row was human-checked (to test the "safe" path).
 const verifiedIndex = buildIndex(plants.map((p) => ({ ...p, humanVerified: true })));
+// And a copy where no row is human-checked yet (to test that unverified rows never say "safe").
+const unverifiedIndex = buildIndex(plants.map((p) => ({ ...p, humanVerified: false })));
 
 describe("dataset integrity", () => {
+  it("every row has been checked by a human against the ASPCA site (2026-11-05)", () => {
+    for (const p of plants) expect(p.humanVerified, p.id).toBe(true);
+  });
+
   it("has no duplicate scientific names (buildIndex throws otherwise)", () => {
     expect(() => buildIndex(plants)).not.toThrow();
   });
@@ -97,7 +103,7 @@ describe("verdict: toxic", () => {
 
 describe("verdict: never 'safe' when unsure", () => {
   it("non-toxic plant with high confidence -> pending review until a human verified the row", () => {
-    const v = evaluate([c("Chlorophytum comosum", 0.9)]);
+    const v = evaluate([c("Chlorophytum comosum", 0.9)], unverifiedIndex);
     expect(v.level).toBe("unknown");
     expect(v.reason).toBe("pending-review");
   });

@@ -19,7 +19,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 7–10 days"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": {
       "toxicPrinciples": "Insoluble calcium oxalates",
       "clinicalSigns": "Oral irritation, intense burning and irritation of mouth, tongue and lips, excessive drooling, vomiting, difficulty swallowing.",
@@ -44,7 +44,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 7–10 days"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": {
       "toxicPrinciples": "Insoluble calcium oxalates",
       "clinicalSigns": "Oral irritation, pain and swelling of mouth, tongue and lips, excessive drooling, vomiting, difficulty swallowing.",
@@ -71,7 +71,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 7–10 days"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": {
       "toxicPrinciples": "Insoluble calcium oxalates",
       "clinicalSigns": "Oral irritation, pain and swelling of mouth, tongue and lips, excessive drooling, vomiting, difficulty swallowing.",
@@ -98,7 +98,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 2–3 weeks (monthly in winter)"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": {
       "toxicPrinciples": "Saponins",
       "clinicalSigns": "Nausea, vomiting, diarrhea.",
@@ -124,7 +124,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 5–7 days"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": {
       "toxicPrinciples": "Insoluble calcium oxalates",
       "clinicalSigns": "Oral irritation, intense burning and irritation of mouth, tongue and lips, excessive drooling, vomiting, difficulty swallowing.",
@@ -150,7 +150,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 2–3 weeks"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": {
       "toxicPrinciples": "Saponins, anthraquinones",
       "clinicalSigns": "Vomiting, lethargy, diarrhea. The gel is considered edible.",
@@ -177,7 +177,7 @@
       "difficulty": "Moderate",
       "waterEvery": "about every 7–10 days"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": {
       "toxicPrinciples": "Insoluble calcium oxalates, proteolytic enzyme",
       "clinicalSigns": "Oral irritation, intense burning and irritation of mouth, tongue and lips, excessive drooling, vomiting, difficulty swallowing.",
@@ -203,7 +203,7 @@
       "difficulty": "Moderate",
       "waterEvery": "about every 7–10 days"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": {
       "toxicPrinciples": "Proteolytic enzyme (ficin), psoralen (ficusin)",
       "clinicalSigns": "Gastrointestinal and dermal irritation.",
@@ -231,7 +231,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 2–3 weeks"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": {
       "toxicPrinciples": "Unknown",
       "clinicalSigns": "Vomiting, depression, incoordination.",
@@ -256,7 +256,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 7–14 days"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": {
       "toxicPrinciples": "Insoluble calcium oxalates",
       "clinicalSigns": "Oral irritation, pain and swelling of mouth, tongue and lips, excessive drooling, vomiting, difficulty swallowing.",
@@ -280,7 +280,7 @@
     "aspca": "Lily | Lilium species | Liliaceae",
     "note": "All true lilies are extremely dangerous to cats: even pollen or vase water can cause fatal kidney failure.",
     "care": null,
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": {
       "toxicPrinciples": "Unknown",
       "clinicalSigns": "Vomiting, inappetence, lethargy, kidney failure, and death is possible. Cats are only species known to be affected.",
@@ -301,7 +301,7 @@
     "aspca": "Day Lilies (many varieties) | Hemerocallis spp. | Xanthorrhoeaceae",
     "note": "Like true lilies, day lilies can cause fatal kidney failure in cats.",
     "care": null,
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": {
       "toxicPrinciples": "Unknown",
       "clinicalSigns": "Vomiting, inappetence, lethargy, kidney failure, death.",
@@ -326,7 +326,7 @@
       "difficulty": "Moderate",
       "waterEvery": "about every 5–7 days"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": {
       "toxicPrinciples": "Insoluble calcium oxalates",
       "clinicalSigns": "Oral irritation, intense burning and irritation of mouth, tongue and lips, excessive drooling, vomiting, difficulty swallowing.",
@@ -351,7 +351,7 @@
       "difficulty": "Moderate",
       "waterEvery": "about every 5–7 days"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": {
       "toxicPrinciples": "Irritant sap",
       "clinicalSigns": "Irritating to the mouth and stomach, sometimes causing vomiting, but generally over-rated in toxicity.",
@@ -377,7 +377,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 2–3 weeks"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": {
       "toxicPrinciples": "Irritant sap (latex)",
       "clinicalSigns": "Irritating to the mouth and stomach, sometimes causing vomiting, but generally over-rated in toxicity.",
@@ -404,7 +404,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 10–14 days"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": {
       "toxicPrinciples": "Bufodienolides",
       "clinicalSigns": "Vomiting, diarrhea, abnormal heart rhythm (rare).",
@@ -431,7 +431,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 7–10 days"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": {
       "toxicPrinciples": "Terpenoids, saponins, insoluble oxalates",
       "clinicalSigns": "Oral irritation, pain and swelling of mouth, tongue and lips, excessive drooling, vomiting, difficulty swallowing.",
@@ -456,7 +456,7 @@
       "difficulty": "Moderate",
       "waterEvery": "about every 5–7 days"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": {
       "toxicPrinciples": "Triterpenoid saponins (hederagenin)",
       "clinicalSigns": "Vomiting, abdominal pain, hypersalivation, diarrhea. Foliage is more toxic than berries.",
@@ -483,7 +483,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 5–7 days"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": {
       "toxicPrinciples": null,
       "clinicalSigns": "Allergic dermatitis with repeated dermal exposure. Berry ingestion could result in gastric upset (vomiting, abdominal pain, or diarrhea).",
@@ -509,7 +509,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 7 days"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": null
   },
   {
@@ -529,7 +529,7 @@
       "difficulty": "Moderate",
       "waterEvery": "about every 2–4 days"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": null
   },
   {
@@ -551,7 +551,7 @@
       "difficulty": "Hard",
       "waterEvery": "about every 5–7 days"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": null
   },
   {
@@ -572,7 +572,7 @@
       "difficulty": "Moderate",
       "waterEvery": "about every 7–10 days"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": null
   },
   {
@@ -602,7 +602,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 7–14 days"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": null
   },
   {
@@ -622,7 +622,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 7–10 days"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": null
   },
   {
@@ -643,7 +643,7 @@
       "difficulty": "Moderate",
       "waterEvery": "about every 5–7 days"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": null
   },
   {
@@ -664,7 +664,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 2–4 weeks"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": null
   },
   {
@@ -687,7 +687,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 2–3 weeks"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": null
   },
   {
@@ -708,7 +708,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 7–10 days"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": null
   },
   {
@@ -728,7 +728,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 10–14 days"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": null
   },
   {
@@ -749,7 +749,7 @@
       "difficulty": "Moderate",
       "waterEvery": "about every 5–7 days"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": null
   },
   {
@@ -769,7 +769,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 10–14 days"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": null
   },
   {
@@ -789,7 +789,7 @@
       "difficulty": "Moderate",
       "waterEvery": "about every 3–5 days"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": null
   },
   {
@@ -812,7 +812,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 2–3 weeks in summer, every 4–6 weeks in winter"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": null
   },
   {
@@ -832,7 +832,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 2–3 weeks in summer, every 4–6 weeks in winter"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": null
   },
   {
@@ -852,7 +852,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 2–3 weeks in summer, almost never in winter"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": null
   },
   {
@@ -873,7 +873,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 7–10 days"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": null
   },
   {
@@ -893,7 +893,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 2–3 weeks in summer, every 4–6 weeks in winter"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": null
   },
   {
@@ -915,7 +915,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 2–3 weeks in summer, almost never in winter"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": null
   },
   {
@@ -937,7 +937,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 7–10 days in summer, every 3–4 weeks in winter"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": null
   },
   {
@@ -959,7 +959,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 2 weeks in summer, almost never in winter"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": null
   },
   {
@@ -980,7 +980,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 2–3 weeks"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": null
   },
   {
@@ -1001,7 +1001,7 @@
       "difficulty": "Easy",
       "waterEvery": "about every 7–10 days"
     },
-    "humanVerified": false,
+    "humanVerified": true,
     "effects": null
   }
 ]

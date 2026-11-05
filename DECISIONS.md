@@ -65,3 +65,6 @@ Accounts, saved plant collections, watering reminders, disease diagnosis, offlin
 - Three views: Recent, **Safest for cats** (non-toxic → unsure → toxic, lilies last; ties go to the easier plant) and **Easiest care** (Easy → Moderate → Hard; ties go to the safer plant). Each plant appears once, using its latest scan.
 - The labels keep the safety rules: "Non-toxic (pending review)" stays amber, and a plant only ranks as safe when its verdict was "Non-toxic". The ranking logic has its own unit tests.
 - Result boxes reordered by importance: verdict → effects on cats → care → photo tip → other matches.
+
+### Dataset verified by a human (2026-11-05)
+- I checked all 43 rows of plants.json against the ASPCA website myself: all accurate, no changes needed. All rows are now marked humanVerified, which unlocks the green "Non-toxic" verdict. A test guards that unverified rows still can't say "Safe".
