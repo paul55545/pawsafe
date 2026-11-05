@@ -13,6 +13,10 @@
   --leaf-wash: #dcead0;
   --peat: #5a4632;
   --on-leaf: #fbfcf8;
+  /* Brand artwork colours (from the logo files) */
+  --logo-ink: #1f3b24;
+  --vine: #1f3b24;
+  --backdrop-opacity: 0.2;
 }
 
 @media (prefers-color-scheme: dark) {
@@ -28,6 +32,9 @@
     --leaf-wash: #233322;
     --peat: #c7a983;
     --on-leaf: #f3f8ef;
+    --logo-ink: #d2e943;
+    --vine: #b9cf4a;
+    --backdrop-opacity: 0.16;
   }
 }
 
@@ -152,35 +159,60 @@ body {
   }
 }
 
-/* ---------- Title ----------
-   White letters with a thick dark-green outline, like a sticker, so they stay readable over the photo. */
-.title-sticker {
-  color: #fbfcf8;
-  -webkit-text-stroke: 7px #1f4224;
-  paint-order: stroke fill;
-  text-shadow: 0 4px 0 rgb(31 66 36 / 0.35);
-  letter-spacing: 0.01em;
+/* ---------- Logo ----------
+   The hand-lettered logo is a transparent mask filled with --logo-ink, over a faded cat-and-leaf drawing. */
+.logo-stage {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  max-width: 22rem;
+  padding-block: 1.25rem;
 }
-.title-roots path {
-  fill: none;
-  stroke: var(--peat);
-  stroke-width: 2.6;
-  stroke-linecap: round;
-  stroke-dasharray: 1;
-  stroke-dashoffset: 0;
-  animation: roots-grow 1.6s ease-out both;
+.logo-backdrop {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 78%;
+  transform: translate(-50%, -50%);
+  opacity: var(--backdrop-opacity);
+  pointer-events: none;
+  user-select: none;
 }
-.title-roots path:nth-child(n + 5) {
-  stroke-width: 1.6;
-  animation-delay: 0.6s;
-}
-@keyframes roots-grow {
-  from {
-    stroke-dashoffset: 1;
+@media (prefers-color-scheme: dark) {
+  /* black outlines would vanish on a dark page: flip them to light, keep the leaf green */
+  .logo-backdrop {
+    filter: invert(1) hue-rotate(180deg);
   }
-  to {
-    stroke-dashoffset: 0;
-  }
+}
+.logo {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 594 / 221;
+  margin: 0;
+  background: var(--logo-ink);
+  mask: url("/brand/logo-mask.png") center / contain no-repeat;
+}
+
+/* ---------- Vine ornament on info boxes ----------
+   Sits at the top-left of a box, its long stroke resting along the top border. */
+.vine-box {
+  position: relative;
+  margin-top: 1.5rem;
+}
+.vine-box::before {
+  content: "";
+  position: absolute;
+  left: 20px;
+  bottom: 100%;
+  width: 96px;
+  height: 40px;
+  margin-bottom: -5px;
+  background: var(--vine);
+  mask: url("/brand/vine-mask.png") left bottom / contain no-repeat;
+  transform: rotate(12deg);
+  transform-origin: left bottom;
+  pointer-events: none;
 }
 
 /* Leaf-cut corners for the verdict banner */
@@ -190,8 +222,7 @@ body {
 
 @media (prefers-reduced-motion: reduce) {
   .leaf-bottom,
-  .leaf-spinner,
-  .title-roots path {
+  .leaf-spinner {
     animation: none;
   }
 }

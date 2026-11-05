@@ -1,7 +1,8 @@
 "use client";
 // "use client" = this component runs in the phone's browser (it needs the camera and buttons).
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { previewResult } from "@/lib/previewResult";
 import { ANALYSIS_SIZE, analyzeGray, rgbaToGray } from "@/lib/photoQuality";
 import { plantEmoji } from "@/lib/plantEmoji";
 import type { Candidate, Verdict } from "@/lib/types";
@@ -57,6 +58,18 @@ export default function PlantScanner() {
   const [loading, setLoading] = useState(false);
   const [preparing, setPreparing] = useState(false); // shrinking + checking a new photo
   const [error, setError] = useState<string | null>(null);
+
+  // #preview shows a sample result; #preview-leaf shows the full two-part leaf (no camera needed).
+  useEffect(() => {
+    const samplePhoto = { blob: new Blob(), url: "/brand/cat-leaf.png", warning: null };
+    if (location.hash === "#preview") {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- one-off, only for the preview link
+      setPhotos([samplePhoto]);
+      setResult(previewResult);
+    } else if (location.hash === "#preview-leaf") {
+      setPhotos([samplePhoto]);
+    }
+  }, []);
 
   async function addPhoto(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
@@ -177,7 +190,7 @@ export default function PlantScanner() {
       {v && (
         <>
           {/* The verdict banner */}
-          <section className={`leaf-corners border-2 p-4 ${LEVEL_STYLE[v.level].box}`}>
+          <section className={`vine-box leaf-corners border-2 p-4 ${LEVEL_STYLE[v.level].box}`}>
             <div className="flex items-start gap-3">
               {/* Plant-type emoji: 🌵 cactus, 🌴 palm, 🌸 orchid, 🌿 leafy plant... 🪴 when unsure */}
               <span
@@ -209,7 +222,7 @@ export default function PlantScanner() {
 
           {/* Option A: advice when the identification was unsure */}
           {v.photoTip && (
-            <p className="rounded-xl bg-sky-100 p-3 text-sky-900">
+            <p className="vine-box rounded-xl border border-sky-300 bg-sky-100 p-3 text-sky-900">
               💡 {v.photoTip}
               {photos.length < MAX_PHOTOS && " Tap “Add another angle” above, then identify again."}
             </p>
@@ -217,7 +230,7 @@ export default function PlantScanner() {
 
           {/* Care card */}
           {v.care && v.plant && (
-            <section className="rounded-2xl border border-zinc-200 p-4 dark:border-zinc-700">
+            <section className="vine-box rounded-2xl border border-line bg-card p-4">
               <h3 className="font-semibold">🪴 Care for {v.plant.commonName}</h3>
               <dl className="mt-2 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-sm">
                 <dt>☀️ Light</dt>
@@ -240,7 +253,7 @@ export default function PlantScanner() {
 
           {/* What this plant does to a cat (verbatim from ASPCA) */}
           {v.effects && (
-            <section className="rounded-2xl border-2 border-red-300 p-4 dark:border-red-800">
+            <section className="vine-box rounded-2xl border-2 border-red-300 bg-card p-4 dark:border-red-800">
               <h3 className="font-semibold">
                 🩺 {v.level === "toxic" ? "" : "If it is "}
                 {v.effects.plantName}: effects on cats
@@ -279,7 +292,7 @@ export default function PlantScanner() {
 
           {/* Other candidates, for transparency */}
           {result.candidates.length > 1 && (
-            <details className="rounded-2xl border border-zinc-200 p-4 dark:border-zinc-700">
+            <details className="vine-box rounded-2xl border border-line bg-card p-4">
               <summary className="cursor-pointer font-semibold">Other possible matches</summary>
               <ul className="mt-2 flex flex-col gap-2">
                 {result.candidates.map((c) => (
