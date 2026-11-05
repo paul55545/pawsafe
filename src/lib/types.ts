@@ -29,6 +29,8 @@ export type Effects = {
 export type PlantEntry = {
   id: string;
   commonName: string;
+  /** Botanical family (current name, e.g. Asphodelaceae for aloe), used for the plant emoji and the cactus note. */
+  family: string;
   /** Scientific names that match this entry. First one is the main name. */
   names: string[];
   /** true = ASPCA lists the WHOLE genus (e.g. "Lilium species"), so any species in it matches. */

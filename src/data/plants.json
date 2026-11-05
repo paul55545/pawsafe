@@ -2,6 +2,7 @@
   {
     "id": "golden-pothos",
     "commonName": "Golden pothos",
+    "family": "Araceae",
     "names": [
       "Epipremnum aureum",
       "Scindapsus aureus",
@@ -30,6 +31,7 @@
   {
     "id": "monstera",
     "commonName": "Swiss cheese plant (Monstera)",
+    "family": "Araceae",
     "names": [
       "Monstera deliciosa"
     ],
@@ -55,6 +57,7 @@
   {
     "id": "philodendron",
     "commonName": "Philodendron",
+    "family": "Araceae",
     "names": [
       "Philodendron hederaceum",
       "Philodendron oxycardium",
@@ -82,6 +85,7 @@
   {
     "id": "snake-plant",
     "commonName": "Snake plant (Mother-in-law's tongue)",
+    "family": "Asparagaceae",
     "names": [
       "Sansevieria trifasciata",
       "Dracaena trifasciata"
@@ -109,6 +113,7 @@
   {
     "id": "peace-lily",
     "commonName": "Peace lily",
+    "family": "Araceae",
     "names": [
       "Spathiphyllum wallisii"
     ],
@@ -135,6 +140,7 @@
   {
     "id": "aloe-vera",
     "commonName": "Aloe vera",
+    "family": "Asphodelaceae",
     "names": [
       "Aloe vera",
       "Aloe barbadensis"
@@ -161,6 +167,7 @@
   {
     "id": "dieffenbachia",
     "commonName": "Dumb cane (Dieffenbachia)",
+    "family": "Araceae",
     "names": [
       "Dieffenbachia seguine",
       "Dieffenbachia amoena",
@@ -188,6 +195,7 @@
   {
     "id": "weeping-fig",
     "commonName": "Weeping fig (Ficus)",
+    "family": "Moraceae",
     "names": [
       "Ficus benjamina"
     ],
@@ -214,6 +222,7 @@
   {
     "id": "jade-plant",
     "commonName": "Jade plant",
+    "family": "Crassulaceae",
     "names": [
       "Crassula ovata",
       "Crassula argentea",
@@ -242,6 +251,7 @@
   {
     "id": "chinese-evergreen",
     "commonName": "Chinese evergreen",
+    "family": "Araceae",
     "names": [
       "Aglaonema modestum"
     ],
@@ -267,6 +277,7 @@
   {
     "id": "lily",
     "commonName": "Lily (true lily)",
+    "family": "Liliaceae",
     "names": [
       "Lilium longiflorum",
       "Lilium lancifolium",
@@ -291,6 +302,7 @@
   {
     "id": "day-lily",
     "commonName": "Day lily",
+    "family": "Asphodelaceae",
     "names": [
       "Hemerocallis fulva",
       "Hemerocallis graminea"
@@ -312,6 +324,7 @@
   {
     "id": "calla-lily",
     "commonName": "Calla lily",
+    "family": "Araceae",
     "names": [
       "Zantedeschia aethiopica"
     ],
@@ -337,6 +350,7 @@
   {
     "id": "poinsettia",
     "commonName": "Poinsettia",
+    "family": "Euphorbiaceae",
     "names": [
       "Euphorbia pulcherrima"
     ],
@@ -362,6 +376,7 @@
   {
     "id": "pencil-cactus",
     "commonName": "Pencil cactus (not a real cactus)",
+    "family": "Euphorbiaceae",
     "names": [
       "Euphorbia tirucalli"
     ],
@@ -388,6 +403,7 @@
   {
     "id": "kalanchoe",
     "commonName": "Kalanchoe",
+    "family": "Crassulaceae",
     "names": [
       "Kalanchoe blossfeldiana",
       "Kalanchoe tubiflora",
@@ -415,6 +431,7 @@
   {
     "id": "schefflera",
     "commonName": "Umbrella tree (Schefflera)",
+    "family": "Araliaceae",
     "names": [
       "Schefflera arboricola",
       "Schefflera actinophylla",
@@ -442,6 +459,7 @@
   {
     "id": "english-ivy",
     "commonName": "English ivy",
+    "family": "Araliaceae",
     "names": [
       "Hedera helix"
     ],
@@ -467,6 +485,7 @@
   {
     "id": "asparagus-fern",
     "commonName": "Asparagus fern",
+    "family": "Asparagaceae",
     "names": [
       "Asparagus densiflorus",
       "Asparagus aethiopicus"
@@ -494,6 +513,7 @@
   {
     "id": "spider-plant",
     "commonName": "Spider plant",
+    "family": "Asparagaceae",
     "names": [
       "Chlorophytum comosum"
     ],
@@ -515,6 +535,7 @@
   {
     "id": "boston-fern",
     "commonName": "Boston fern",
+    "family": "Nephrolepidaceae",
     "names": [
       "Nephrolepis exaltata"
     ],
@@ -535,6 +556,7 @@
   {
     "id": "calathea",
     "commonName": "Calathea",
+    "family": "Marantaceae",
     "names": [
       "Calathea insignis",
       "Calathea micans"
@@ -557,6 +579,7 @@
   {
     "id": "moth-orchid",
     "commonName": "Moth orchid (Phalaenopsis)",
+    "family": "Orchidaceae",
     "names": [
       "Phalaenopsis amabilis",
       "Phalaenopsis aphrodite"
@@ -578,6 +601,7 @@
   {
     "id": "peperomia",
     "commonName": "Peperomia",
+    "family": "Piperaceae",
     "names": [
       "Peperomia obtusifolia",
       "Peperomia griseoargentea",
@@ -608,6 +632,7 @@
   {
     "id": "parlor-palm",
     "commonName": "Parlor palm",
+    "family": "Arecaceae",
     "names": [
       "Chamaedorea elegans"
     ],
@@ -628,6 +653,7 @@
   {
     "id": "areca-palm",
     "commonName": "Areca palm",
+    "family": "Arecaceae",
     "names": [
       "Dypsis lutescens",
       "Chrysalidocarpus lutescens"
@@ -649,6 +675,7 @@
   {
     "id": "ponytail-palm",
     "commonName": "Ponytail palm",
+    "family": "Asparagaceae",
     "names": [
       "Beaucarnea recurvata",
       "Nolina tuberculata"
@@ -670,6 +697,7 @@
   {
     "id": "haworthia",
     "commonName": "Haworthia (zebra plant)",
+    "family": "Asphodelaceae",
     "names": [
       "Haworthia fasciata",
       "Haworthia margaritifera",
@@ -693,6 +721,7 @@
   {
     "id": "christmas-cactus",
     "commonName": "Christmas cactus",
+    "family": "Cactaceae",
     "names": [
       "Schlumbergera bridgesii",
       "Schlumbergera russelliana"
@@ -714,6 +743,7 @@
   {
     "id": "hoya",
     "commonName": "Wax plant (Hoya)",
+    "family": "Apocynaceae",
     "names": [
       "Hoya carnosa"
     ],
@@ -734,6 +764,7 @@
   {
     "id": "african-violet",
     "commonName": "African violet",
+    "family": "Gesneriaceae",
     "names": [
       "Saintpaulia ionantha",
       "Saintpaulia confusa"
@@ -755,6 +786,7 @@
   {
     "id": "cast-iron-plant",
     "commonName": "Cast iron plant",
+    "family": "Asparagaceae",
     "names": [
       "Aspidistra elatior"
     ],
@@ -775,6 +807,7 @@
   {
     "id": "nerve-plant",
     "commonName": "Nerve plant",
+    "family": "Acanthaceae",
     "names": [
       "Fittonia verschaffeltii"
     ],
@@ -795,6 +828,7 @@
   {
     "id": "opuntia",
     "commonName": "Prickly pear / bunny ears cactus (Opuntia)",
+    "family": "Cactaceae",
     "names": [
       "Opuntia microdasys",
       "Opuntia monacantha",
@@ -818,6 +852,7 @@
   {
     "id": "thimble-cactus",
     "commonName": "Thimble cactus",
+    "family": "Cactaceae",
     "names": [
       "Mammillaria fragilis"
     ],
@@ -838,6 +873,7 @@
   {
     "id": "old-man-cactus",
     "commonName": "Old man cactus",
+    "family": "Cactaceae",
     "names": [
       "Cephalocereus senilis"
     ],
@@ -858,6 +894,7 @@
   {
     "id": "mistletoe-cactus",
     "commonName": "Mistletoe cactus",
+    "family": "Cactaceae",
     "names": [
       "Rhipsalis cassutha"
     ],
@@ -879,6 +916,7 @@
   {
     "id": "easter-lily-cactus",
     "commonName": "Easter lily cactus",
+    "family": "Cactaceae",
     "names": [
       "Echinopsis multiplex"
     ],
@@ -899,6 +937,7 @@
   {
     "id": "golden-barrel-cactus",
     "commonName": "Golden barrel cactus",
+    "family": "Cactaceae",
     "names": [
       "Kroenleinia grusonii",
       "Echinocactus grusonii"
@@ -921,6 +960,7 @@
   {
     "id": "rat-tail-cactus",
     "commonName": "Rat tail cactus",
+    "family": "Cactaceae",
     "names": [
       "Aporocactus flagelliformis",
       "Disocactus flagelliformis"
@@ -943,6 +983,7 @@
   {
     "id": "peanut-cactus",
     "commonName": "Peanut cactus",
+    "family": "Cactaceae",
     "names": [
       "Chamaecereus silvestrii",
       "Echinopsis chamaecereus"
@@ -965,6 +1006,7 @@
   {
     "id": "zz-plant",
     "commonName": "ZZ plant",
+    "family": "Araceae",
     "names": [
       "Zamioculcas zamiifolia"
     ],
@@ -986,6 +1028,7 @@
   {
     "id": "chinese-money-plant",
     "commonName": "Chinese money plant",
+    "family": "Urticaceae",
     "names": [
       "Pilea peperomioides"
     ],

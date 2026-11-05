@@ -132,7 +132,9 @@ export function evaluate(candidates: Candidate[], index: PlantIndex = plantIndex
   const effects =
     effectsOf(top.entry?.toxicToCats && top.kind !== "toxic-relative" ? top : toxicAlert) ??
     (genusInfo && relative?.entry?.effects ? { ...relative.entry.effects, plantName: relative.entry.commonName } : null);
-  const cactusNote = !toxicAlert && isSpinyNonPsychoactiveCactus(top.top) ? CACTUS_NOTE : null;
+  // Not for cacti ASPCA already confirms as non-toxic: they get the proper "Non-toxic" verdict instead.
+  const confirmedNonToxic = confident && top.entry?.toxicToCats === false && top.kind !== "toxic-relative";
+  const cactusNote = !toxicAlert && !confirmedNonToxic && isSpinyNonPsychoactiveCactus(top.top) ? CACTUS_NOTE : null;
   const base = { plant, severe, care, aspca, effects, genusInfo, cactusNote, photoTip: confident ? null : PHOTO_TIP };
   const GENUS_NOTE = genusInfo
     ? ` Plants in the same genus usually contain the same irritants, so the ${genusInfo.genus} info below is a good guide.`

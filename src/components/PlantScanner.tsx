@@ -4,6 +4,7 @@
 import { useEffect, useState } from "react";
 import { previewResult } from "@/lib/previewResult";
 import { saveScan } from "@/lib/history";
+import { SHOW_RESULT_EVENT } from "@/components/Menu";
 import { ANALYSIS_SIZE, analyzeGray, rgbaToGray } from "@/lib/photoQuality";
 import { plantEmoji } from "@/lib/plantEmoji";
 import type { Candidate, Verdict } from "@/lib/types";
@@ -84,6 +85,20 @@ export default function PlantScanner() {
     }
   }, []);
 
+  // A plant picked in "Search by name" (menu) is shown here, exactly like a scan result
+  const [searchedName, setSearchedName] = useState<string | null>(null);
+  useEffect(() => {
+    const onShow = (e: Event) => {
+      const { candidates, verdict, name } = (e as CustomEvent).detail;
+      setPhotos([]);
+      setError(null);
+      setResult({ candidates, verdict });
+      setSearchedName(name);
+    };
+    window.addEventListener(SHOW_RESULT_EVENT, onShow);
+    return () => window.removeEventListener(SHOW_RESULT_EVENT, onShow);
+  }, []);
+
   async function addPhoto(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     e.target.value = ""; // allow picking the same file again
@@ -128,6 +143,7 @@ export default function PlantScanner() {
     setPhotos([]);
     setResult(null);
     setError(null);
+    setSearchedName(null);
   }
 
   const v = result?.verdict;
@@ -135,6 +151,13 @@ export default function PlantScanner() {
 
   return (
     <div className="flex w-full max-w-md flex-col gap-4">
+      {/* Shown when the result came from "Search by name" instead of a photo */}
+      {searchedName && result && photos.length === 0 && (
+        <p className="rounded-xl border border-line bg-card px-3 py-2 text-sm text-muted">
+          🔍 Searched by name: <span className="font-semibold text-foreground">{searchedName}</span>
+        </p>
+      )}
+
       {/* Photo thumbnails (tap ✕ to remove) */}
       {(photos.length > 0 || preparing) && (
         <div className="flex gap-2">
@@ -341,7 +364,7 @@ export default function PlantScanner() {
         </>
       )}
 
-      {photos.length > 0 && (
+      {(photos.length > 0 || result) && (
         <button onClick={reset} className="font-semibold text-moss underline underline-offset-4">
           Start over
         </button>

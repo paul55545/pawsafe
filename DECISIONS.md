@@ -73,3 +73,13 @@ Accounts, saved plant collections, watering reminders, disease diagnosis, offlin
 - Cacti ASPCA doesn't list (like my golden barrel and rat tail) now say "Probably low risk: a spiny cactus", with a note: probably safe, not known to be poisonous, and most cats won't bite into spines; the spines can still injure mouth, paws or eyes.
 - The verdict stays amber, never green: "probably safe" is a judgement, not an ASPCA record.
 - Excluded: spineless cacti (Christmas/mistletoe cactus: the spine argument doesn't apply), mescaline cacti (peyote, San Pedro), cactus lookalikes like Euphorbia (different family), and any result with a toxic plant among the likely matches.
+
+### Search by name
+- Menu → "Search by name" finds plants by our common name, ASPCA's common names and scientific names (old names too, e.g. Sansevieria), ignoring case and accents.
+- A searched plant goes through exactly the same safety rules as a photo, at 100% identification, since the user told us the name. The dataset and the rules stay on the server (/api/search).
+- Not found means "not in our database": treat it as potentially toxic. Search never invents a verdict.
+- Bug caught by a screenshot: ASPCA-listed non-toxic cacti (old man cactus, Easter lily cactus) were showing the "probably low risk" note instead of the real "Non-toxic" verdict. Fixed, with a test.
+
+### Installable app (PWA)
+- Web app manifest (name, icons, standalone full-screen, splash colour), theme colours for light/dark, iPhone home-screen settings.
+- "Install app" appears in the menu when Chrome offers installation.

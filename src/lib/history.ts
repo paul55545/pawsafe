@@ -99,7 +99,7 @@ export const rankByCare = (rs: ScanRecord[]) =>
   [...rs].sort((a, b) => careRank(a) - careRank(b) || safetyRank(a) - safetyRank(b) || b.at - a.at);
 
 /** Short badge text for a scan, matching the verdict colours. */
-export function safetyLabel(r: ScanRecord): string {
+export function safetyLabel(r: Pick<ScanRecord, "reason" | "severe">): string {
   if (r.severe) return "Deadly to cats";
   switch (r.reason) {
     case "confident-safe":

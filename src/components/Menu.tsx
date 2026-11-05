@@ -16,8 +16,27 @@ import {
   type ScanRecord,
 } from "@/lib/history";
 import { plantEmoji } from "@/lib/plantEmoji";
+import type { Candidate, Verdict } from "@/lib/types";
 
-type View = "menu" | "recent";
+type View = "menu" | "recent" | "search";
+
+type SearchResult = {
+  id: string;
+  commonName: string;
+  scientificName: string;
+  family: string;
+  candidates: Candidate[];
+  verdict: Verdict;
+};
+
+/** Chrome's install prompt event (not in TypeScript's built-in types yet). */
+type InstallPromptEvent = Event & {
+  prompt: () => Promise<void>;
+  userChoice: Promise<{ outcome: "accepted" | "dismissed" }>;
+};
+
+/** Event the scanner listens for, to show a searched plant on the main page like a scan result. */
+export const SHOW_RESULT_EVENT = "pawsafe:show-result";
 type Tab = "recent" | "safest" | "easiest";
 
 const TABS: { id: Tab; label: string }[] = [
@@ -123,7 +142,71 @@ export default function Menu() {
   const [tab, setTab] = useState<Tab>("recent");
   const [records, setRecords] = useState<ScanRecord[]>([]);
   const [confirmClear, setConfirmClear] = useState(false);
+  const [query, setQuery] = useState("");
+  const [results, setResults] = useState<SearchResult[] | null>(null); // null = nothing searched yet
+  const [searching, setSearching] = useState(false);
+  const [total, setTotal] = useState<number | null>(null); // plants in the database (from the server)
   const panelRef = useRef<HTMLDivElement>(null);
+  const searchRef = useRef<HTMLInputElement>(null);
+
+  // "Install app": Chrome fires beforeinstallprompt when the site can be installed. We keep the event
+  // and show the menu item; tapping it opens Chrome's own install dialog.
+  const [installPrompt, setInstallPrompt] = useState<InstallPromptEvent | null>(null);
+  useEffect(() => {
+    const onPrompt = (e: Event) => {
+      e.preventDefault(); // we'll show it from the menu instead of a browser banner
+      setInstallPrompt(e as InstallPromptEvent);
+    };
+    const onInstalled = () => setInstallPrompt(null);
+    window.addEventListener("beforeinstallprompt", onPrompt);
+    window.addEventListener("appinstalled", onInstalled);
+    return () => {
+      window.removeEventListener("beforeinstallprompt", onPrompt);
+      window.removeEventListener("appinstalled", onInstalled);
+    };
+  }, []);
+
+  async function install() {
+    if (!installPrompt) return;
+    await installPrompt.prompt();
+    const { outcome } = await installPrompt.userChoice;
+    if (outcome === "accepted") setInstallPrompt(null);
+    setOpen(false);
+  }
+
+  // Search as you type, 250 ms after the last keystroke
+  useEffect(() => {
+    const q = query.trim();
+    if (q.length < 2) return;
+    let cancelled = false;
+    const t = setTimeout(async () => {
+      setSearching(true);
+      try {
+        const res = await fetch(`/api/search?q=${encodeURIComponent(q)}`);
+        const data = await res.json();
+        if (!cancelled) {
+          setResults(data.results ?? []);
+          setTotal(data.total ?? null);
+        }
+      } catch {
+        if (!cancelled) setResults([]);
+      } finally {
+        if (!cancelled) setSearching(false);
+      }
+    }, 250);
+    return () => {
+      cancelled = true;
+      clearTimeout(t);
+    };
+  }, [query]);
+
+  function showResult(r: SearchResult) {
+    window.dispatchEvent(
+      new CustomEvent(SHOW_RESULT_EVENT, { detail: { candidates: r.candidates, verdict: r.verdict, name: r.commonName } }),
+    );
+    setOpen(false);
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 
   function openMenu(start: View = "menu", data?: ScanRecord[]) {
     setRecords(data ?? loadHistory()); // read fresh each time, so new scans show up
@@ -140,6 +223,9 @@ export default function Menu() {
       // eslint-disable-next-line react-hooks/set-state-in-effect -- one-off, only for the preview link
       setTab(start as Tab);
       openMenu("recent", PREVIEW);
+    } else if (location.hash === "#preview-search") {
+      setQuery("cactus");
+      openMenu("search");
     }
   }, []);
 
@@ -149,12 +235,13 @@ export default function Menu() {
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
     document.addEventListener("keydown", onKey);
     document.body.style.overflow = "hidden";
-    panelRef.current?.focus();
+    if (view === "search") searchRef.current?.focus();
+    else panelRef.current?.focus();
     return () => {
       document.removeEventListener("keydown", onKey);
       document.body.style.overflow = "";
     };
-  }, [open]);
+  }, [open, view]);
 
   const plants = uniquePlants(records);
   const list = tab === "safest" ? rankBySafety(plants) : tab === "easiest" ? rankByCare(plants) : plants;
@@ -174,7 +261,7 @@ export default function Menu() {
         ref={panelRef}
         role="dialog"
         aria-modal="true"
-        aria-label={view === "menu" ? "Menu" : "Recent plants"}
+        aria-label={view === "menu" ? "Menu" : view === "search" ? "Search by name" : "Recent plants"}
         tabIndex={-1}
         className={`menu-panel ${open ? "is-open" : ""}`}
         inert={!open}
@@ -199,13 +286,90 @@ export default function Menu() {
             <button type="button" onClick={() => setOpen(false)} className="menu-item">
               <span aria-hidden="true">📷</span> Scan a plant
             </button>
+            <button type="button" onClick={() => setView("search")} className="menu-item">
+              <span aria-hidden="true">🔍</span> Search by name
+            </button>
             <button type="button" onClick={() => setView("recent")} className="menu-item">
               <span aria-hidden="true">🌿</span> Recent plants
               {plants.length > 0 && (
                 <span className="ml-auto rounded-full bg-leaf-wash px-2 text-sm text-moss-deep">{plants.length}</span>
               )}
             </button>
+            {installPrompt && (
+              <button type="button" onClick={install} className="menu-item">
+                <span aria-hidden="true">📲</span> Install app
+              </button>
+            )}
           </nav>
+        ) : view === "search" ? (
+          <div className="flex min-h-0 flex-1 flex-col pt-3">
+            <h2 className="text-xl font-bold">Search by name</h2>
+            <p className="text-xs text-muted">Common or scientific name, e.g. “snake plant” or “Monstera”.</p>
+            <form role="search" onSubmit={(e) => e.preventDefault()} className="mt-3">
+              <label htmlFor="plant-search" className="sr-only">
+                Plant name
+              </label>
+              <input
+                id="plant-search"
+                ref={searchRef}
+                type="search"
+                inputMode="search"
+                autoComplete="off"
+                value={query}
+                onChange={(e) => {
+                  setQuery(e.target.value);
+                  if (e.target.value.trim().length < 2) setResults(null);
+                }}
+                placeholder="Type a plant name…"
+                className="w-full rounded-xl border border-line bg-background px-4 py-3 text-base outline-none focus:border-fern focus:ring-2 focus:ring-fern/40"
+              />
+            </form>
+
+            <div className="mt-2 min-h-0 flex-1 overflow-y-auto">
+              {searching && results === null && <p className="py-4 text-center text-muted">Searching…</p>}
+              {results?.length === 0 && (
+                <p className="py-4 text-sm text-muted">
+                  No plant called “{query.trim()}” in our database{total ? ` (${total} common houseplants)` : ""}. Treat it as
+                  potentially toxic until you&apos;ve checked it on the ASPCA plant list, or try scanning it with a
+                  photo.
+                </p>
+              )}
+              {results && results.length > 0 && (
+                <ul className="divide-y divide-line">
+                  {results.map((r) => (
+                    <li key={r.id}>
+                      <button
+                        type="button"
+                        onClick={() => showResult(r)}
+                        className="flex w-full items-center gap-3 py-3 text-left"
+                      >
+                        <span className="flex h-12 w-12 flex-none items-center justify-center rounded-lg bg-leaf-wash text-2xl" aria-hidden="true">
+                          {plantEmoji(r.family, r.scientificName.split(" ")[0])}
+                        </span>
+                        <span className="min-w-0 flex-1">
+                          <span className="block truncate font-semibold">{r.commonName}</span>
+                          <span className="block truncate text-xs italic text-muted">{r.scientificName}</span>
+                          <span className="mt-1 flex flex-wrap gap-1 text-xs">
+                            <span
+                              className={`rounded-full px-2 py-0.5 font-medium ${BADGE[r.verdict.severe ? "severe" : r.verdict.level]}`}
+                            >
+                              {r.verdict.cactusNote ? "Probably low risk" : safetyLabel(r.verdict)}
+                            </span>
+                            <span className="rounded-full bg-leaf-wash px-2 py-0.5 text-moss-deep">
+                              {r.verdict.care ? `${r.verdict.care.difficulty} care` : "Care unknown"}
+                            </span>
+                          </span>
+                        </span>
+                        <span aria-hidden="true" className="text-muted">
+                          ›
+                        </span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+          </div>
         ) : (
           <div className="flex min-h-0 flex-1 flex-col pt-3">
             <h2 className="text-xl font-bold">Recent plants</h2>
