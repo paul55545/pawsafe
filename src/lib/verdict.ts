@@ -69,6 +69,8 @@ export function evaluate(candidates: Candidate[], index: PlantIndex = plantIndex
   const plant = {
     commonName: name(top),
     scientificName: top.top.scientificName,
+    family: top.top.family,
+    genus: top.top.genus,
     confidence: Math.min(1, top.score),
   };
   // Includes toxic relatives: e.g. an unlisted Euphorbia looking like a cactus.

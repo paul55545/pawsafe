@@ -66,7 +66,7 @@ export type Verdict = {
   title: string;
   message: string;
   /** Best guess of what the plant is (may be uncertain). */
-  plant: { commonName: string; scientificName: string; confidence: number } | null;
+  plant: { commonName: string; scientificName: string; family: string; genus: string; confidence: number } | null;
   severe: boolean;
   /** "Take a closer photo..." advice when the identification was unsure. */
   photoTip: string | null;

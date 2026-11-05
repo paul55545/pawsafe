@@ -3,6 +3,7 @@
 
 import { useState } from "react";
 import { ANALYSIS_SIZE, analyzeGray, rgbaToGray } from "@/lib/photoQuality";
+import { plantEmoji } from "@/lib/plantEmoji";
 import type { Candidate, Verdict } from "@/lib/types";
 
 const MAX_PHOTOS = 3;
@@ -177,14 +178,25 @@ export default function PlantScanner() {
         <>
           {/* The verdict banner */}
           <section className={`leaf-corners border-2 p-4 ${LEVEL_STYLE[v.level].box}`}>
-            <h2 className="text-xl font-bold">
-              {LEVEL_STYLE[v.level].icon} {v.title}
-            </h2>
-            {v.plant && (
-              <p className="mt-1 text-sm">
-                Best match: <i>{v.plant.scientificName}</i> · {Math.round(v.plant.confidence * 100)}% confidence
-              </p>
-            )}
+            <div className="flex items-start gap-3">
+              {/* Plant-type emoji: 🌵 cactus, 🌴 palm, 🌸 orchid, 🌿 leafy plant... 🪴 when unsure */}
+              <span
+                aria-hidden="true"
+                className="flex h-14 w-14 flex-none items-center justify-center rounded-full bg-white/60 text-4xl dark:bg-black/20"
+              >
+                {plantEmoji(v.plant?.family, v.plant?.genus)}
+              </span>
+              <div className="min-w-0">
+                <h2 className="text-xl font-bold">
+                  {LEVEL_STYLE[v.level].icon} {v.title}
+                </h2>
+                {v.plant && (
+                  <p className="mt-1 text-sm">
+                    Best match: <i>{v.plant.scientificName}</i> · {Math.round(v.plant.confidence * 100)}% confidence
+                  </p>
+                )}
+              </div>
+            </div>
             <p className="mt-2">{v.message}</p>
             {v.severe && (
               <p className="mt-2 rounded-lg bg-red-700 p-2 font-semibold text-white">
@@ -255,8 +267,7 @@ export default function PlantScanner() {
                 <div>
                   <dt className="font-medium">📞 What to do</dt>
                   <dd>
-                    Remove the plant, check your cat&apos;s mouth, and contact your vet as soon as possible. (US: ASPCA
-                    Poison Control (888) 426-4435, a fee may apply.)
+                    Remove the plant, check your cat&apos;s mouth, and contact your vet as soon as possible.
                   </dd>
                 </div>
               </dl>

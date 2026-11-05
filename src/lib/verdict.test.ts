@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { buildIndex, genusKey, plants, speciesKey } from "./plants";
 import { evaluate } from "./verdict";
+import { plantEmoji } from "./plantEmoji";
 import type { Candidate } from "./types";
 
 const c = (scientificName: string, score: number, commonName = ""): Candidate => ({
@@ -48,6 +49,16 @@ describe("dataset integrity", () => {
   it("lilies are flagged severe", () => {
     expect(plants.find((p) => p.id === "lily")?.severe).toBe(true);
     expect(plants.find((p) => p.id === "day-lily")?.severe).toBe(true);
+  });
+});
+
+describe("plantEmoji", () => {
+  it("picks by family, with genus overrides and a generic fallback", () => {
+    expect(plantEmoji("Cactaceae", "Opuntia")).toBe("🌵");
+    expect(plantEmoji("Euphorbiaceae", "Euphorbia")).toBe("🪴"); // pencil "cactus" is not a cactus
+    expect(plantEmoji("Araceae", "Epipremnum")).toBe("🌿");
+    expect(plantEmoji("Liliaceae", "Lilium")).toBe("🌷");
+    expect(plantEmoji(undefined, undefined)).toBe("🪴");
   });
 });
 
