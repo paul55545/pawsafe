@@ -11,8 +11,11 @@ export default function manifest(): MetadataRoute.Manifest {
     scope: "/",
     display: "standalone", // opens without the browser's address bar, like a native app
     orientation: "portrait",
-    background_color: "#eef1ea", // splash screen while the app starts
-    theme_color: "#2f5d34",
+    // Android colours the installed app's status + navigation bars with theme_color, and uses
+    // background_color for the launch screen. Both match the dark page (the icon is dark green too),
+    // so there's no bright strip behind the gesture bar.
+    background_color: "#121812",
+    theme_color: "#121812",
     icons: [
       { src: "/icon-192.png", sizes: "192x192", type: "image/png", purpose: "any" },
       { src: "/icon-512.png", sizes: "512x512", type: "image/png", purpose: "any" },
