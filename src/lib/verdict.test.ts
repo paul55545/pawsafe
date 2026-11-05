@@ -55,10 +55,10 @@ describe("dataset integrity", () => {
 describe("plantEmoji", () => {
   it("picks by family, with genus overrides and a generic fallback", () => {
     expect(plantEmoji("Cactaceae", "Opuntia")).toBe("🌵");
-    expect(plantEmoji("Euphorbiaceae", "Euphorbia")).toBe("🪴"); // pencil "cactus" is not a cactus
+    expect(plantEmoji("Euphorbiaceae", "Euphorbia")).toBe("🌱"); // pencil "cactus" is not a cactus
     expect(plantEmoji("Araceae", "Epipremnum")).toBe("🌿");
     expect(plantEmoji("Liliaceae", "Lilium")).toBe("🌷");
-    expect(plantEmoji(undefined, undefined)).toBe("🪴");
+    expect(plantEmoji(undefined, undefined)).toBe("🌱");
   });
 });
 

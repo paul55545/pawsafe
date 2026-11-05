@@ -192,7 +192,7 @@ export default function PlantScanner() {
           {/* The verdict banner */}
           <section className={`vine-box leaf-corners border-2 p-4 ${LEVEL_STYLE[v.level].box}`}>
             <div className="flex items-start gap-3">
-              {/* Plant-type emoji: 🌵 cactus, 🌴 palm, 🌸 orchid, 🌿 leafy plant... 🪴 when unsure */}
+              {/* Plant-type emoji: 🌵 cactus, 🌴 palm, 🌸 orchid, 🌿 leafy plant... 🌱 when unsure */}
               <span
                 aria-hidden="true"
                 className="flex h-14 w-14 flex-none items-center justify-center rounded-full bg-white/60 text-4xl dark:bg-black/20"
@@ -231,7 +231,7 @@ export default function PlantScanner() {
           {/* Care card */}
           {v.care && v.plant && (
             <section className="vine-box rounded-2xl border border-line bg-card p-4">
-              <h3 className="font-semibold">🪴 Care for {v.plant.commonName}</h3>
+              <h3 className="font-semibold">🌱 Care for {v.plant.commonName}</h3>
               <dl className="mt-2 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-sm">
                 <dt>☀️ Light</dt>
                 <dd>{v.care.light}</dd>

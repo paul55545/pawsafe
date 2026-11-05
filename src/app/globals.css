@@ -207,10 +207,10 @@ body {
   bottom: 100%;
   width: 96px;
   height: 40px;
-  margin-bottom: -5px;
+  margin-bottom: -7px;
   background: var(--vine);
   mask: url("/brand/vine-mask.png") left bottom / contain no-repeat;
-  transform: rotate(12deg);
+  transform: rotate(17deg);
   transform-origin: left bottom;
   pointer-events: none;
 }

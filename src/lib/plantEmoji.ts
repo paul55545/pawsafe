@@ -34,7 +34,7 @@ const BY_FAMILY: Record<string, string> = {
   davalliaceae: "🌿",
 };
 
-export const GENERIC_PLANT = "🪴";
+export const GENERIC_PLANT = "🌱"; // 🪴 would fit better but is missing from Windows 10 emoji fonts
 
 export function plantEmoji(family?: string, genus?: string): string {
   return BY_GENUS[genus?.toLowerCase() ?? ""] ?? BY_FAMILY[family?.toLowerCase() ?? ""] ?? GENERIC_PLANT;
