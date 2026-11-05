@@ -3,13 +3,14 @@
 
 import { useEffect, useState } from "react";
 import { previewResult } from "@/lib/previewResult";
+import { saveScan } from "@/lib/history";
 import { ANALYSIS_SIZE, analyzeGray, rgbaToGray } from "@/lib/photoQuality";
 import { plantEmoji } from "@/lib/plantEmoji";
 import type { Candidate, Verdict } from "@/lib/types";
 
 const MAX_PHOTOS = 3;
 
-type Photo = { blob: Blob; url: string; warning: string | null };
+type Photo = { blob: Blob; url: string; warning: string | null; thumb: string | null };
 
 function drawScaled(bitmap: ImageBitmap, maxSize: number) {
   const scale = Math.min(1, maxSize / Math.max(bitmap.width, bitmap.height));
@@ -34,7 +35,9 @@ async function preparePhoto(file: File): Promise<Photo> {
   const blob = await new Promise<Blob>((resolve, reject) =>
     canvas.toBlob((b) => (b ? resolve(b) : reject(new Error("Could not process photo"))), "image/jpeg", 0.85),
   );
-  return { blob, url: URL.createObjectURL(blob), warning: quality.warning };
+  // Tiny copy (~5 KB) kept in "Recent plants" on this phone
+  const thumb = drawScaled(bitmap, 112).canvas.toDataURL("image/jpeg", 0.7);
+  return { blob, url: URL.createObjectURL(blob), warning: quality.warning, thumb };
 }
 
 function CameraIcon() {
@@ -71,7 +74,7 @@ export default function PlantScanner() {
 
   // #preview shows a sample result; #preview-leaf shows the full two-part leaf (no camera needed).
   useEffect(() => {
-    const samplePhoto = { blob: new Blob(), url: "/brand/cat-leaf.png", warning: null };
+    const samplePhoto = { blob: new Blob(), url: "/brand/cat-leaf.png", warning: null, thumb: null };
     if (location.hash === "#preview") {
       // eslint-disable-next-line react-hooks/set-state-in-effect -- one-off, only for the preview link
       setPhotos([samplePhoto]);
@@ -113,6 +116,7 @@ export default function PlantScanner() {
       const data = await res.json();
       if (!res.ok) throw new Error(data.error ?? "Something went wrong");
       setResult(data);
+      saveScan(data.verdict, photos[0]?.thumb ?? null); // remembered under "Recent plants" (this phone only)
     } catch (err) {
       setError(err instanceof Error ? err.message : "Network error. Check your connection.");
     } finally {
@@ -230,40 +234,7 @@ export default function PlantScanner() {
             {v.aspca && <p className="mt-2 text-xs opacity-75">ASPCA entry: {v.aspca}</p>}
           </section>
 
-          {/* Option A: advice when the identification was unsure */}
-          {v.photoTip && (
-            <p className="vine-box rounded-xl border border-sky-300 bg-sky-100 p-3 text-sky-900">
-              💡 {v.photoTip}
-              {photos.length < MAX_PHOTOS && " Tap “Add another angle” above, then identify again."}
-            </p>
-          )}
-
-          {/* Care card */}
-          {v.care && v.plant && (
-            <section className="vine-box rounded-2xl border border-line bg-card p-4">
-              <h3 className="font-semibold">
-                🌱 Care for {v.genusInfo ? `${v.genusInfo.genus} plants (general)` : v.plant.commonName}
-              </h3>
-              {v.genusInfo && <GenusNote info={v.genusInfo} />}
-              <dl className="mt-2 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-sm">
-                <dt>☀️ Light</dt>
-                <dd>{v.care.light}</dd>
-                <dt>💧 Water</dt>
-                <dd>
-                  {v.care.water} / {v.care.waterEvery}
-                </dd>
-                <dt>💨 Humidity</dt>
-                <dd>{v.care.humidity}</dd>
-                <dt>📈 Difficulty</dt>
-                <dd>{v.care.difficulty}</dd>
-              </dl>
-              <p className="mt-2 text-xs text-zinc-500">
-                Watering intervals are typical for indoor plants in spring/summer. Pot size, light and season change
-                them, so check the soil first.
-              </p>
-            </section>
-          )}
-
+          {/* Order: verdict, effects on cats, care, photo tip, other matches */}
           {/* What this plant does to a cat (verbatim from ASPCA) */}
           {v.effects && (
             <section className="vine-box rounded-2xl border-2 border-red-300 bg-card p-4 dark:border-red-800">
@@ -304,6 +275,40 @@ export default function PlantScanner() {
                 Source: ASPCA plant page
               </a>
             </section>
+          )}
+
+          {/* Care card */}
+          {v.care && v.plant && (
+            <section className="vine-box rounded-2xl border border-line bg-card p-4">
+              <h3 className="font-semibold">
+                🌱 Care for {v.genusInfo ? `${v.genusInfo.genus} plants (general)` : v.plant.commonName}
+              </h3>
+              {v.genusInfo && <GenusNote info={v.genusInfo} />}
+              <dl className="mt-2 grid grid-cols-[auto_1fr] gap-x-3 gap-y-1 text-sm">
+                <dt>☀️ Light</dt>
+                <dd>{v.care.light}</dd>
+                <dt>💧 Water</dt>
+                <dd>
+                  {v.care.water} / {v.care.waterEvery}
+                </dd>
+                <dt>💨 Humidity</dt>
+                <dd>{v.care.humidity}</dd>
+                <dt>📈 Difficulty</dt>
+                <dd>{v.care.difficulty}</dd>
+              </dl>
+              <p className="mt-2 text-xs text-zinc-500">
+                Watering intervals are typical for indoor plants in spring/summer. Pot size, light and season change
+                them, so check the soil first.
+              </p>
+            </section>
+          )}
+
+          {/* Option A: advice when the identification was unsure */}
+          {v.photoTip && (
+            <p className="vine-box rounded-xl border border-sky-300 bg-sky-100 p-3 text-sky-900">
+              💡 {v.photoTip}
+              {photos.length < MAX_PHOTOS && " Tap “Add another angle” above, then identify again."}
+            </p>
           )}
 
           {/* Other candidates, for transparency */}

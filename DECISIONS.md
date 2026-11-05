@@ -59,3 +59,9 @@ Accounts, saved plant collections, watering reminders, disease diagnosis, offlin
 - Real test: my Monstera adansonii photo came back 48% *Monstera adansonii*, which ASPCA doesn't list, while *Monstera deliciosa* is listed as toxic.
 - If the candidates for a genus add up to ≥ 40% and that genus has an ASPCA-listed **toxic** member, the app now says **"Likely toxic: a Monstera"** and shows that member's care info and dangers, clearly labelled as general genus info.
 - Only at genus level, and only in the warning direction. Same-genus plants usually share their irritants (all Monstera contain calcium oxalate), but not always (ASPCA lists *Aloe vera* as toxic and *Aloe retusa* as non-toxic), and families are far too broad. So genus info is never used to call a plant safe, and the verdict is never upgraded to a confident "Toxic".
+
+### Recent plants + rankings (menu)
+- A menu in the top-left slides in a panel with "Recent plants": every scan is saved **on the phone only** (browser storage, with a small thumbnail), so there are still no accounts and no database.
+- Three views: Recent, **Safest for cats** (non-toxic → unsure → toxic, lilies last; ties go to the easier plant) and **Easiest care** (Easy → Moderate → Hard; ties go to the safer plant). Each plant appears once, using its latest scan.
+- The labels keep the safety rules: "Non-toxic (pending review)" stays amber, and a plant only ranks as safe when its verdict was "Non-toxic". The ranking logic has its own unit tests.
+- Result boxes reordered by importance: verdict → effects on cats → care → photo tip → other matches.
