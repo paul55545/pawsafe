@@ -11,9 +11,18 @@ export type Candidate = {
 
 export type Care = {
   light: string;
-  water: string;
+  water: string; // when, by soil dryness
+  waterEvery: string; // typical interval, e.g. "about every 7–10 days"
   humidity: string;
   difficulty: "Easy" | "Moderate" | "Hard";
+};
+
+/** What a toxic plant does to a cat — verbatim from the plant's ASPCA page. */
+export type Effects = {
+  toxicPrinciples: string | null; // the substance that causes the harm
+  clinicalSigns: string; // symptoms
+  seriousness: string | null; // only where ASPCA states it
+  aspcaUrl: string;
 };
 
 /** One row of our curated dataset (src/data/plants.json). */
@@ -32,6 +41,8 @@ export type PlantEntry = {
   aspca: string | null;
   note?: string;
   care: Care | null;
+  /** Only for toxic plants. */
+  effects: Effects | null;
   /** Set to true only after a human has checked this row against the ASPCA website. */
   humanVerified: boolean;
 };
@@ -61,4 +72,6 @@ export type Verdict = {
   photoTip: string | null;
   care: Care | null;
   aspca: string | null;
+  /** Symptoms etc. of the toxic plant this verdict is about (the confident match or the possible lookalike). */
+  effects: (Effects & { plantName: string }) | null;
 };

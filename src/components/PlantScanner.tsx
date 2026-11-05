@@ -182,12 +182,58 @@ export default function PlantScanner() {
                 <dt>☀️ Light</dt>
                 <dd>{v.care.light}</dd>
                 <dt>💧 Water</dt>
-                <dd>{v.care.water}</dd>
+                <dd>
+                  {v.care.water} / {v.care.waterEvery}
+                </dd>
                 <dt>💨 Humidity</dt>
                 <dd>{v.care.humidity}</dd>
                 <dt>📈 Difficulty</dt>
                 <dd>{v.care.difficulty}</dd>
               </dl>
+              <p className="mt-2 text-xs text-zinc-500">
+                Watering intervals are typical for indoor plants in spring/summer. Pot size, light and season change
+                them, so check the soil first.
+              </p>
+            </section>
+          )}
+
+          {/* What this plant does to a cat (verbatim from ASPCA) */}
+          {v.effects && (
+            <section className="rounded-2xl border-2 border-red-300 p-4 dark:border-red-800">
+              <h3 className="font-semibold">
+                🩺 {v.level === "toxic" ? "" : "If it is "}
+                {v.effects.plantName}: effects on cats
+              </h3>
+              <dl className="mt-2 flex flex-col gap-2 text-sm">
+                {v.effects.toxicPrinciples && (
+                  <div>
+                    <dt className="font-medium">🧪 What causes it</dt>
+                    <dd>{v.effects.toxicPrinciples}</dd>
+                  </div>
+                )}
+                <div>
+                  <dt className="font-medium">🤒 Symptoms</dt>
+                  <dd>{v.effects.clinicalSigns}</dd>
+                </div>
+                <div>
+                  <dt className="font-medium">⚖️ How serious / how much</dt>
+                  <dd>
+                    {v.effects.seriousness ? `${v.effects.seriousness} ` : ""}
+                    ASPCA doesn&apos;t give a safe amount. How bad it gets depends on how much was eaten and on the
+                    cat&apos;s size, so treat any chewing as a reason to call your vet.
+                  </dd>
+                </div>
+                <div>
+                  <dt className="font-medium">📞 What to do</dt>
+                  <dd>
+                    Remove the plant, check your cat&apos;s mouth, and contact your vet as soon as possible. (US: ASPCA
+                    Poison Control (888) 426-4435, a fee may apply.)
+                  </dd>
+                </div>
+              </dl>
+              <a href={v.effects.aspcaUrl} target="_blank" rel="noopener noreferrer" className="mt-2 block text-xs underline">
+                Source: ASPCA plant page
+              </a>
             </section>
           )}
 

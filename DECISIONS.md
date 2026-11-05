@@ -48,3 +48,9 @@ A running log of decisions and problems, used as the script for the demo video.
 
 ### Out of scope (on purpose)
 Accounts, saved plant collections, watering reminders, disease diagnosis, offline mode, app stores.
+
+### Watering intervals + "effects on cats" section
+- Care card now shows *when* to water (soil dryness) **and** a typical interval ("about every 7–10 days"). The soil check comes first; the interval is a guide for spring/summer.
+- Toxic plants now show **what causes it, the symptoms, and how serious it is**, quoted from each plant's own ASPCA page (19 pages fetched), with a link to the source.
+- Deliberately **no "X grams = Y effect" numbers**: ASPCA doesn't publish them, and inventing doses would be unsafe. Seriousness is only shown where ASPCA states it (e.g. lilies: "death is possible"; poinsettia: "generally over-rated in toxicity").
+- For a "possibly toxic" result, the app shows the symptoms of the toxic lookalike ("If it is Snake plant…").

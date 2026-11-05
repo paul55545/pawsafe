@@ -57,6 +57,7 @@ export function evaluate(candidates: Candidate[], index: PlantIndex = plantIndex
       photoTip: PHOTO_TIP,
       care: null,
       aspca: null,
+      effects: null,
     };
   }
 
@@ -76,7 +77,11 @@ export function evaluate(candidates: Candidate[], index: PlantIndex = plantIndex
   // Care info only when we actually matched this plant (not a relative), labelled as "if this is X" in the UI.
   const care = top.entry && (top.kind === "species" || top.kind === "genus") ? top.entry.care : null;
   const aspca = top.entry && top.kind !== "toxic-relative" ? top.entry.aspca : null;
-  const base = { plant, severe, care, aspca, photoTip: confident ? null : PHOTO_TIP };
+  // Symptoms are shown for the toxic plant we're warning about (only exact/genus matches, not relatives).
+  const effectsOf = (g: Group | undefined) =>
+    g?.entry?.effects && g.kind !== "toxic-relative" ? { ...g.entry.effects, plantName: g.entry.commonName } : null;
+  const effects = effectsOf(top.entry?.toxicToCats ? top : toxicAlert);
+  const base = { plant, severe, care, aspca, effects, photoTip: confident ? null : PHOTO_TIP };
 
   // Rule: confident ID of a toxic plant.
   if (confident && top.entry?.toxicToCats === true && top.kind !== "toxic-relative") {

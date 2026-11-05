@@ -2,493 +2,1006 @@
   {
     "id": "golden-pothos",
     "commonName": "Golden pothos",
-    "names": ["Epipremnum aureum", "Scindapsus aureus", "Epipremnum pinnatum"],
+    "names": [
+      "Epipremnum aureum",
+      "Scindapsus aureus",
+      "Epipremnum pinnatum"
+    ],
     "genusWide": false,
     "toxicToCats": true,
     "severe": false,
     "aspca": "Golden Pothos | Epipremnum aureum | Araceae",
     "note": "Epipremnum pinnatum is not on the ASPCA list; mapped here conservatively (toxic direction only) because plant ID services often return it for golden pothos.",
-    "care": { "light": "Low to bright indirect light", "water": "When the top 2–3 cm of soil is dry", "humidity": "Average room humidity is fine", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Low to bright indirect light",
+      "water": "When the top 2–3 cm of soil is dry",
+      "humidity": "Average room humidity is fine",
+      "difficulty": "Easy",
+      "waterEvery": "about every 7–10 days"
+    },
+    "humanVerified": false,
+    "effects": {
+      "toxicPrinciples": "Insoluble calcium oxalates",
+      "clinicalSigns": "Oral irritation, intense burning and irritation of mouth, tongue and lips, excessive drooling, vomiting, difficulty swallowing.",
+      "seriousness": null,
+      "aspcaUrl": "https://www.aspca.org/pet-care/aspca-poison-control/toxic-and-non-toxic-plants/golden-pothos"
+    }
   },
   {
     "id": "monstera",
     "commonName": "Swiss cheese plant (Monstera)",
-    "names": ["Monstera deliciosa"],
+    "names": [
+      "Monstera deliciosa"
+    ],
     "genusWide": false,
     "toxicToCats": true,
     "severe": false,
     "aspca": "Swiss Cheese Plant | Monstera deliciosa | Araceae",
-    "care": { "light": "Bright indirect light", "water": "When the top 5 cm of soil is dry", "humidity": "Medium to high", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Bright indirect light",
+      "water": "When the top 5 cm of soil is dry",
+      "humidity": "Medium to high",
+      "difficulty": "Easy",
+      "waterEvery": "about every 7–10 days"
+    },
+    "humanVerified": false,
+    "effects": {
+      "toxicPrinciples": "Insoluble calcium oxalates",
+      "clinicalSigns": "Oral irritation, pain and swelling of mouth, tongue and lips, excessive drooling, vomiting, difficulty swallowing.",
+      "seriousness": null,
+      "aspcaUrl": "https://www.aspca.org/pet-care/aspca-poison-control/toxic-and-non-toxic-plants/ceriman"
+    }
   },
   {
     "id": "philodendron",
     "commonName": "Philodendron",
-    "names": ["Philodendron hederaceum", "Philodendron oxycardium", "Philodendron scandens"],
+    "names": [
+      "Philodendron hederaceum",
+      "Philodendron oxycardium",
+      "Philodendron scandens"
+    ],
     "genusWide": true,
     "toxicToCats": true,
     "severe": false,
     "aspca": "Heartleaf Philodendron | Philodendron hederaceum | Araceae; Philodendron Pertusum | Philodendron spp | Araceae",
-    "care": { "light": "Medium to bright indirect light", "water": "When the top 2–3 cm of soil is dry", "humidity": "Average to high", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Medium to bright indirect light",
+      "water": "When the top 2–3 cm of soil is dry",
+      "humidity": "Average to high",
+      "difficulty": "Easy",
+      "waterEvery": "about every 7–10 days"
+    },
+    "humanVerified": false,
+    "effects": {
+      "toxicPrinciples": "Insoluble calcium oxalates",
+      "clinicalSigns": "Oral irritation, pain and swelling of mouth, tongue and lips, excessive drooling, vomiting, difficulty swallowing.",
+      "seriousness": null,
+      "aspcaUrl": "https://www.aspca.org/pet-care/aspca-poison-control/toxic-and-non-toxic-plants/heartleaf-philodendron"
+    }
   },
   {
     "id": "snake-plant",
     "commonName": "Snake plant (Mother-in-law's tongue)",
-    "names": ["Sansevieria trifasciata", "Dracaena trifasciata"],
+    "names": [
+      "Sansevieria trifasciata",
+      "Dracaena trifasciata"
+    ],
     "genusWide": false,
     "toxicToCats": true,
     "severe": false,
     "aspca": "Snake Plant | Sansevieria trifasciata | Agavaceae",
     "note": "Botanists renamed it Dracaena trifasciata; ASPCA still uses Sansevieria.",
-    "care": { "light": "Low to bright light", "water": "Sparingly, when soil is fully dry", "humidity": "Low is fine", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Low to bright light",
+      "water": "Sparingly, when soil is fully dry",
+      "humidity": "Low is fine",
+      "difficulty": "Easy",
+      "waterEvery": "about every 2–3 weeks (monthly in winter)"
+    },
+    "humanVerified": false,
+    "effects": {
+      "toxicPrinciples": "Saponins",
+      "clinicalSigns": "Nausea, vomiting, diarrhea.",
+      "seriousness": null,
+      "aspcaUrl": "https://www.aspca.org/pet-care/aspca-poison-control/toxic-and-non-toxic-plants/golden-birds-nest"
+    }
   },
   {
     "id": "peace-lily",
     "commonName": "Peace lily",
-    "names": ["Spathiphyllum wallisii"],
+    "names": [
+      "Spathiphyllum wallisii"
+    ],
     "genusWide": true,
     "toxicToCats": true,
     "severe": false,
     "aspca": "Peace Lily | Spathiphyllum | Araceae",
     "note": "Not a true lily, but still toxic (calcium oxalate crystals).",
-    "care": { "light": "Low to medium indirect light", "water": "Keep lightly moist; it droops when thirsty", "humidity": "Medium to high", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Low to medium indirect light",
+      "water": "Keep lightly moist; it droops when thirsty",
+      "humidity": "Medium to high",
+      "difficulty": "Easy",
+      "waterEvery": "about every 5–7 days"
+    },
+    "humanVerified": false,
+    "effects": {
+      "toxicPrinciples": "Insoluble calcium oxalates",
+      "clinicalSigns": "Oral irritation, intense burning and irritation of mouth, tongue and lips, excessive drooling, vomiting, difficulty swallowing.",
+      "seriousness": null,
+      "aspcaUrl": "https://www.aspca.org/pet-care/aspca-poison-control/toxic-and-non-toxic-plants/peace-lily"
+    }
   },
   {
     "id": "aloe-vera",
     "commonName": "Aloe vera",
-    "names": ["Aloe vera", "Aloe barbadensis"],
+    "names": [
+      "Aloe vera",
+      "Aloe barbadensis"
+    ],
     "genusWide": false,
     "toxicToCats": true,
     "severe": false,
     "aspca": "Aloe | Aloe vera | Liliaceae",
-    "care": { "light": "Bright light, some direct sun", "water": "Sparingly, when soil is fully dry", "humidity": "Low", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Bright light, some direct sun",
+      "water": "Sparingly, when soil is fully dry",
+      "humidity": "Low",
+      "difficulty": "Easy",
+      "waterEvery": "about every 2–3 weeks"
+    },
+    "humanVerified": false,
+    "effects": {
+      "toxicPrinciples": "Saponins, anthraquinones",
+      "clinicalSigns": "Vomiting, lethargy, diarrhea. The gel is considered edible.",
+      "seriousness": null,
+      "aspcaUrl": "https://www.aspca.org/pet-care/aspca-poison-control/toxic-and-non-toxic-plants/aloe"
+    }
   },
   {
     "id": "dieffenbachia",
     "commonName": "Dumb cane (Dieffenbachia)",
-    "names": ["Dieffenbachia seguine", "Dieffenbachia amoena", "Dieffenbachia picta"],
+    "names": [
+      "Dieffenbachia seguine",
+      "Dieffenbachia amoena",
+      "Dieffenbachia picta"
+    ],
     "genusWide": true,
     "toxicToCats": true,
     "severe": false,
     "aspca": "Dieffenbachia | Dieffenbachia | Araceae",
-    "care": { "light": "Medium indirect light", "water": "When the top 2–3 cm of soil is dry", "humidity": "Medium to high", "difficulty": "Moderate" },
-    "humanVerified": false
+    "care": {
+      "light": "Medium indirect light",
+      "water": "When the top 2–3 cm of soil is dry",
+      "humidity": "Medium to high",
+      "difficulty": "Moderate",
+      "waterEvery": "about every 7–10 days"
+    },
+    "humanVerified": false,
+    "effects": {
+      "toxicPrinciples": "Insoluble calcium oxalates, proteolytic enzyme",
+      "clinicalSigns": "Oral irritation, intense burning and irritation of mouth, tongue and lips, excessive drooling, vomiting, difficulty swallowing.",
+      "seriousness": null,
+      "aspcaUrl": "https://www.aspca.org/pet-care/aspca-poison-control/toxic-and-non-toxic-plants/dieffenbachia"
+    }
   },
   {
     "id": "weeping-fig",
     "commonName": "Weeping fig (Ficus)",
-    "names": ["Ficus benjamina"],
+    "names": [
+      "Ficus benjamina"
+    ],
     "genusWide": true,
     "toxicToCats": true,
     "severe": false,
     "aspca": "Fig | Ficus benjamina | Moraceae; Weeping Fig | Ficus sp. | Moraceae",
     "note": "ASPCA lists 'Ficus sp.' as toxic, so all figs (incl. rubber plant, Ficus elastica) match here.",
-    "care": { "light": "Bright indirect light", "water": "When the top 2–3 cm of soil is dry", "humidity": "Medium", "difficulty": "Moderate" },
-    "humanVerified": false
+    "care": {
+      "light": "Bright indirect light",
+      "water": "When the top 2–3 cm of soil is dry",
+      "humidity": "Medium",
+      "difficulty": "Moderate",
+      "waterEvery": "about every 7–10 days"
+    },
+    "humanVerified": false,
+    "effects": {
+      "toxicPrinciples": "Proteolytic enzyme (ficin), psoralen (ficusin)",
+      "clinicalSigns": "Gastrointestinal and dermal irritation.",
+      "seriousness": null,
+      "aspcaUrl": "https://www.aspca.org/pet-care/aspca-poison-control/toxic-and-non-toxic-plants/fig"
+    }
   },
   {
     "id": "jade-plant",
     "commonName": "Jade plant",
-    "names": ["Crassula ovata", "Crassula argentea", "Crassula arborescens"],
+    "names": [
+      "Crassula ovata",
+      "Crassula argentea",
+      "Crassula arborescens"
+    ],
     "genusWide": false,
     "toxicToCats": true,
     "severe": false,
     "aspca": "Jade Plant | Crassula argentea | Crassulaceae; Silver Jade Plant | Crassula arborescens | Crassulaceae",
     "note": "Crassula argentea is an older name for Crassula ovata.",
-    "care": { "light": "Bright light, some direct sun", "water": "Sparingly, when soil is fully dry", "humidity": "Low", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Bright light, some direct sun",
+      "water": "Sparingly, when soil is fully dry",
+      "humidity": "Low",
+      "difficulty": "Easy",
+      "waterEvery": "about every 2–3 weeks"
+    },
+    "humanVerified": false,
+    "effects": {
+      "toxicPrinciples": "Unknown",
+      "clinicalSigns": "Vomiting, depression, incoordination.",
+      "seriousness": null,
+      "aspcaUrl": "https://www.aspca.org/pet-care/aspca-poison-control/toxic-and-non-toxic-plants/jade-plant"
+    }
   },
   {
     "id": "chinese-evergreen",
     "commonName": "Chinese evergreen",
-    "names": ["Aglaonema modestum"],
+    "names": [
+      "Aglaonema modestum"
+    ],
     "genusWide": false,
     "toxicToCats": true,
     "severe": false,
     "aspca": "Chinese Evergreen | Aglaonema modestum | Araceae",
-    "care": { "light": "Low to medium indirect light", "water": "When the top 2–3 cm of soil is dry", "humidity": "Medium", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Low to medium indirect light",
+      "water": "When the top 2–3 cm of soil is dry",
+      "humidity": "Medium",
+      "difficulty": "Easy",
+      "waterEvery": "about every 7–14 days"
+    },
+    "humanVerified": false,
+    "effects": {
+      "toxicPrinciples": "Insoluble calcium oxalates",
+      "clinicalSigns": "Oral irritation, pain and swelling of mouth, tongue and lips, excessive drooling, vomiting, difficulty swallowing.",
+      "seriousness": null,
+      "aspcaUrl": "https://www.aspca.org/pet-care/aspca-poison-control/toxic-and-non-toxic-plants/chinese-evergreen"
+    }
   },
   {
     "id": "lily",
     "commonName": "Lily (true lily)",
-    "names": ["Lilium longiflorum", "Lilium lancifolium", "Lilium tigrinum", "Lilium speciosum", "Lilium orientalis"],
+    "names": [
+      "Lilium longiflorum",
+      "Lilium lancifolium",
+      "Lilium tigrinum",
+      "Lilium speciosum",
+      "Lilium orientalis"
+    ],
     "genusWide": true,
     "toxicToCats": true,
     "severe": true,
     "aspca": "Lily | Lilium species | Liliaceae",
     "note": "All true lilies are extremely dangerous to cats: even pollen or vase water can cause fatal kidney failure.",
     "care": null,
-    "humanVerified": false
+    "humanVerified": false,
+    "effects": {
+      "toxicPrinciples": "Unknown",
+      "clinicalSigns": "Vomiting, inappetence, lethargy, kidney failure, and death is possible. Cats are only species known to be affected.",
+      "seriousness": "Potentially fatal. ASPCA: kidney failure and death are possible.",
+      "aspcaUrl": "https://www.aspca.org/pet-care/aspca-poison-control/toxic-and-non-toxic-plants/easter-lily"
+    }
   },
   {
     "id": "day-lily",
     "commonName": "Day lily",
-    "names": ["Hemerocallis fulva", "Hemerocallis graminea"],
+    "names": [
+      "Hemerocallis fulva",
+      "Hemerocallis graminea"
+    ],
     "genusWide": true,
     "toxicToCats": true,
     "severe": true,
     "aspca": "Day Lilies (many varieties) | Hemerocallis spp. | Xanthorrhoeaceae",
     "note": "Like true lilies, day lilies can cause fatal kidney failure in cats.",
     "care": null,
-    "humanVerified": false
+    "humanVerified": false,
+    "effects": {
+      "toxicPrinciples": "Unknown",
+      "clinicalSigns": "Vomiting, inappetence, lethargy, kidney failure, death.",
+      "seriousness": "Potentially fatal. ASPCA: kidney failure and death are possible.",
+      "aspcaUrl": "https://www.aspca.org/pet-care/aspca-poison-control/toxic-and-non-toxic-plants/day-lilies-many-varieties"
+    }
   },
   {
     "id": "calla-lily",
     "commonName": "Calla lily",
-    "names": ["Zantedeschia aethiopica"],
+    "names": [
+      "Zantedeschia aethiopica"
+    ],
     "genusWide": false,
     "toxicToCats": true,
     "severe": false,
     "aspca": "Calla Lily | Zantedeschia aethiopica | Araceae",
-    "care": { "light": "Bright indirect light", "water": "Keep soil moist while flowering", "humidity": "Medium", "difficulty": "Moderate" },
-    "humanVerified": false
+    "care": {
+      "light": "Bright indirect light",
+      "water": "Keep soil moist while flowering",
+      "humidity": "Medium",
+      "difficulty": "Moderate",
+      "waterEvery": "about every 5–7 days"
+    },
+    "humanVerified": false,
+    "effects": {
+      "toxicPrinciples": "Insoluble calcium oxalates",
+      "clinicalSigns": "Oral irritation, intense burning and irritation of mouth, tongue and lips, excessive drooling, vomiting, difficulty swallowing.",
+      "seriousness": null,
+      "aspcaUrl": "https://www.aspca.org/pet-care/aspca-poison-control/toxic-and-non-toxic-plants/calla-lily"
+    }
   },
   {
     "id": "poinsettia",
     "commonName": "Poinsettia",
-    "names": ["Euphorbia pulcherrima"],
+    "names": [
+      "Euphorbia pulcherrima"
+    ],
     "genusWide": false,
     "toxicToCats": true,
     "severe": false,
     "aspca": "Poinsettia | Euphorbia pulcherrima | Euphorbiaceae",
-    "care": { "light": "Bright indirect light", "water": "When the soil surface is dry", "humidity": "Medium", "difficulty": "Moderate" },
-    "humanVerified": false
+    "care": {
+      "light": "Bright indirect light",
+      "water": "When the soil surface is dry",
+      "humidity": "Medium",
+      "difficulty": "Moderate",
+      "waterEvery": "about every 5–7 days"
+    },
+    "humanVerified": false,
+    "effects": {
+      "toxicPrinciples": "Irritant sap",
+      "clinicalSigns": "Irritating to the mouth and stomach, sometimes causing vomiting, but generally over-rated in toxicity.",
+      "seriousness": "Usually mild. ASPCA: \"generally over-rated in toxicity\".",
+      "aspcaUrl": "https://www.aspca.org/pet-care/aspca-poison-control/toxic-and-non-toxic-plants/poinsettia"
+    }
   },
   {
     "id": "pencil-cactus",
     "commonName": "Pencil cactus (not a real cactus)",
-    "names": ["Euphorbia tirucalli"],
+    "names": [
+      "Euphorbia tirucalli"
+    ],
     "genusWide": false,
     "toxicToCats": true,
     "severe": false,
     "aspca": "Pencil Cactus | Euphorbia tirucalli | Euphorbiaceae",
     "note": "Looks like a cactus but is a Euphorbia with irritating milky sap.",
-    "care": { "light": "Bright light, direct sun", "water": "Sparingly, when soil is fully dry", "humidity": "Low", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Bright light, direct sun",
+      "water": "Sparingly, when soil is fully dry",
+      "humidity": "Low",
+      "difficulty": "Easy",
+      "waterEvery": "about every 2–3 weeks"
+    },
+    "humanVerified": false,
+    "effects": {
+      "toxicPrinciples": "Irritant sap (latex)",
+      "clinicalSigns": "Irritating to the mouth and stomach, sometimes causing vomiting, but generally over-rated in toxicity.",
+      "seriousness": "Usually mild. ASPCA: \"generally over-rated in toxicity\".",
+      "aspcaUrl": "https://www.aspca.org/pet-care/aspca-poison-control/toxic-and-non-toxic-plants/pencil-cactus"
+    }
   },
   {
     "id": "kalanchoe",
     "commonName": "Kalanchoe",
-    "names": ["Kalanchoe blossfeldiana", "Kalanchoe tubiflora", "Kalanchoe daigremontiana"],
+    "names": [
+      "Kalanchoe blossfeldiana",
+      "Kalanchoe tubiflora",
+      "Kalanchoe daigremontiana"
+    ],
     "genusWide": true,
     "toxicToCats": true,
     "severe": false,
     "aspca": "Kalanchoe | Kalanchoe spp | Crassulaceae",
-    "care": { "light": "Bright light, some direct sun", "water": "When soil is dry", "humidity": "Low", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Bright light, some direct sun",
+      "water": "When soil is dry",
+      "humidity": "Low",
+      "difficulty": "Easy",
+      "waterEvery": "about every 10–14 days"
+    },
+    "humanVerified": false,
+    "effects": {
+      "toxicPrinciples": "Bufodienolides",
+      "clinicalSigns": "Vomiting, diarrhea, abnormal heart rhythm (rare).",
+      "seriousness": "Usually stomach upset; ASPCA notes abnormal heart rhythm is possible but rare.",
+      "aspcaUrl": "https://www.aspca.org/pet-care/aspca-poison-control/toxic-and-non-toxic-plants/kalanchoe"
+    }
   },
   {
     "id": "schefflera",
     "commonName": "Umbrella tree (Schefflera)",
-    "names": ["Schefflera arboricola", "Schefflera actinophylla", "Brassaia actinophylla"],
+    "names": [
+      "Schefflera arboricola",
+      "Schefflera actinophylla",
+      "Brassaia actinophylla"
+    ],
     "genusWide": true,
     "toxicToCats": true,
     "severe": false,
     "aspca": "Schefflera | Schefflera | Araliaceae",
-    "care": { "light": "Bright indirect light", "water": "When the top 2–3 cm of soil is dry", "humidity": "Medium", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Bright indirect light",
+      "water": "When the top 2–3 cm of soil is dry",
+      "humidity": "Medium",
+      "difficulty": "Easy",
+      "waterEvery": "about every 7–10 days"
+    },
+    "humanVerified": false,
+    "effects": {
+      "toxicPrinciples": "Terpenoids, saponins, insoluble oxalates",
+      "clinicalSigns": "Oral irritation, pain and swelling of mouth, tongue and lips, excessive drooling, vomiting, difficulty swallowing.",
+      "seriousness": null,
+      "aspcaUrl": "https://www.aspca.org/pet-care/aspca-poison-control/toxic-and-non-toxic-plants/australian-ivy-palm"
+    }
   },
   {
     "id": "english-ivy",
     "commonName": "English ivy",
-    "names": ["Hedera helix"],
+    "names": [
+      "Hedera helix"
+    ],
     "genusWide": false,
     "toxicToCats": true,
     "severe": false,
     "aspca": "English Ivy | Hedera helix | Araliaceae",
-    "care": { "light": "Medium to bright indirect light", "water": "Keep lightly moist", "humidity": "Medium", "difficulty": "Moderate" },
-    "humanVerified": false
+    "care": {
+      "light": "Medium to bright indirect light",
+      "water": "Keep lightly moist",
+      "humidity": "Medium",
+      "difficulty": "Moderate",
+      "waterEvery": "about every 5–7 days"
+    },
+    "humanVerified": false,
+    "effects": {
+      "toxicPrinciples": "Triterpenoid saponins (hederagenin)",
+      "clinicalSigns": "Vomiting, abdominal pain, hypersalivation, diarrhea. Foliage is more toxic than berries.",
+      "seriousness": null,
+      "aspcaUrl": "https://www.aspca.org/pet-care/aspca-poison-control/toxic-and-non-toxic-plants/english-ivy"
+    }
   },
   {
     "id": "asparagus-fern",
     "commonName": "Asparagus fern",
-    "names": ["Asparagus densiflorus", "Asparagus aethiopicus"],
+    "names": [
+      "Asparagus densiflorus",
+      "Asparagus aethiopicus"
+    ],
     "genusWide": false,
     "toxicToCats": true,
     "severe": false,
     "aspca": "Asparagus Fern | Asparagus densiflorus cv sprengeri | Liliaceae",
     "note": "Not a true fern. Asparagus aethiopicus is mapped here conservatively (toxic direction only).",
-    "care": { "light": "Bright indirect light", "water": "Keep lightly moist", "humidity": "Medium", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Bright indirect light",
+      "water": "Keep lightly moist",
+      "humidity": "Medium",
+      "difficulty": "Easy",
+      "waterEvery": "about every 5–7 days"
+    },
+    "humanVerified": false,
+    "effects": {
+      "toxicPrinciples": null,
+      "clinicalSigns": "Allergic dermatitis with repeated dermal exposure. Berry ingestion could result in gastric upset (vomiting, abdominal pain, or diarrhea).",
+      "seriousness": null,
+      "aspcaUrl": "https://www.aspca.org/pet-care/aspca-poison-control/toxic-and-non-toxic-plants/asparagus-fern"
+    }
   },
   {
     "id": "spider-plant",
     "commonName": "Spider plant",
-    "names": ["Chlorophytum comosum"],
+    "names": [
+      "Chlorophytum comosum"
+    ],
     "genusWide": false,
     "toxicToCats": false,
     "severe": false,
     "aspca": "Spider Plant | Chlorophytum comosum | Asparagaceae",
     "note": "Non-toxic, but many cats love chewing it; large amounts can still upset the stomach.",
-    "care": { "light": "Medium to bright indirect light", "water": "When the top 2–3 cm of soil is dry", "humidity": "Average", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Medium to bright indirect light",
+      "water": "When the top 2–3 cm of soil is dry",
+      "humidity": "Average",
+      "difficulty": "Easy",
+      "waterEvery": "about every 7 days"
+    },
+    "humanVerified": false,
+    "effects": null
   },
   {
     "id": "boston-fern",
     "commonName": "Boston fern",
-    "names": ["Nephrolepis exaltata"],
+    "names": [
+      "Nephrolepis exaltata"
+    ],
     "genusWide": false,
     "toxicToCats": false,
     "severe": false,
     "aspca": "Boston Fern | Nephrolepis exalta bostoniensis | Dryopteridaceae; Feather Palm | Nephrolepis exaltata | Nephrolepidaceae",
-    "care": { "light": "Medium indirect light", "water": "Keep soil consistently moist", "humidity": "High", "difficulty": "Moderate" },
-    "humanVerified": false
+    "care": {
+      "light": "Medium indirect light",
+      "water": "Keep soil consistently moist",
+      "humidity": "High",
+      "difficulty": "Moderate",
+      "waterEvery": "about every 2–4 days"
+    },
+    "humanVerified": false,
+    "effects": null
   },
   {
     "id": "calathea",
     "commonName": "Calathea",
-    "names": ["Calathea insignis", "Calathea micans"],
+    "names": [
+      "Calathea insignis",
+      "Calathea micans"
+    ],
     "genusWide": true,
     "toxicToCats": false,
     "severe": false,
     "aspca": "Calathea | Calathea spp. | Marantaceae",
     "note": "Many Calatheas were renamed Goeppertia; ASPCA doesn't list that name, so Goeppertia results are NOT treated as safe.",
-    "care": { "light": "Medium indirect light, no direct sun", "water": "Keep lightly moist; use soft water", "humidity": "High", "difficulty": "Hard" },
-    "humanVerified": false
+    "care": {
+      "light": "Medium indirect light, no direct sun",
+      "water": "Keep lightly moist; use soft water",
+      "humidity": "High",
+      "difficulty": "Hard",
+      "waterEvery": "about every 5–7 days"
+    },
+    "humanVerified": false,
+    "effects": null
   },
   {
     "id": "moth-orchid",
     "commonName": "Moth orchid (Phalaenopsis)",
-    "names": ["Phalaenopsis amabilis", "Phalaenopsis aphrodite"],
+    "names": [
+      "Phalaenopsis amabilis",
+      "Phalaenopsis aphrodite"
+    ],
     "genusWide": true,
     "toxicToCats": false,
     "severe": false,
     "aspca": "Phalaenopsis Orchid | Phalaenopsis sp. | Orchidaceae",
-    "care": { "light": "Bright indirect light", "water": "When roots turn silvery, about weekly", "humidity": "Medium to high", "difficulty": "Moderate" },
-    "humanVerified": false
+    "care": {
+      "light": "Bright indirect light",
+      "water": "When roots turn silvery, about weekly",
+      "humidity": "Medium to high",
+      "difficulty": "Moderate",
+      "waterEvery": "about every 7–10 days"
+    },
+    "humanVerified": false,
+    "effects": null
   },
   {
     "id": "peperomia",
     "commonName": "Peperomia",
-    "names": ["Peperomia obtusifolia", "Peperomia griseoargentea", "Peperomia rotundifolia", "Peperomia sandersii", "Peperomia peltifolia", "Peperomia caperata", "Peperomia crassifolia", "Peperomia prostrata", "Peperomia serpens", "Peperomia clusiifolia", "Peperomia argyreia"],
+    "names": [
+      "Peperomia obtusifolia",
+      "Peperomia griseoargentea",
+      "Peperomia rotundifolia",
+      "Peperomia sandersii",
+      "Peperomia peltifolia",
+      "Peperomia caperata",
+      "Peperomia crassifolia",
+      "Peperomia prostrata",
+      "Peperomia serpens",
+      "Peperomia clusiifolia",
+      "Peperomia argyreia"
+    ],
     "genusWide": false,
     "toxicToCats": false,
     "severe": false,
     "aspca": "Baby Rubber Plant | Peperomia obtusifolia | Pipericeae (+ 10 other Peperomia species listed non-toxic)",
-    "care": { "light": "Medium to bright indirect light", "water": "When soil is mostly dry", "humidity": "Average", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Medium to bright indirect light",
+      "water": "When soil is mostly dry",
+      "humidity": "Average",
+      "difficulty": "Easy",
+      "waterEvery": "about every 7–14 days"
+    },
+    "humanVerified": false,
+    "effects": null
   },
   {
     "id": "parlor-palm",
     "commonName": "Parlor palm",
-    "names": ["Chamaedorea elegans"],
+    "names": [
+      "Chamaedorea elegans"
+    ],
     "genusWide": false,
     "toxicToCats": false,
     "severe": false,
     "aspca": "Parlor Palm | Chamaedorea elegans | Palmae",
-    "care": { "light": "Low to medium indirect light", "water": "When the top 2–3 cm of soil is dry", "humidity": "Medium", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Low to medium indirect light",
+      "water": "When the top 2–3 cm of soil is dry",
+      "humidity": "Medium",
+      "difficulty": "Easy",
+      "waterEvery": "about every 7–10 days"
+    },
+    "humanVerified": false,
+    "effects": null
   },
   {
     "id": "areca-palm",
     "commonName": "Areca palm",
-    "names": ["Dypsis lutescens", "Chrysalidocarpus lutescens"],
+    "names": [
+      "Dypsis lutescens",
+      "Chrysalidocarpus lutescens"
+    ],
     "genusWide": false,
     "toxicToCats": false,
     "severe": false,
     "aspca": "Areca Palm | Dypsis lutescens | Palmae",
-    "care": { "light": "Bright indirect light", "water": "Keep lightly moist", "humidity": "Medium to high", "difficulty": "Moderate" },
-    "humanVerified": false
+    "care": {
+      "light": "Bright indirect light",
+      "water": "Keep lightly moist",
+      "humidity": "Medium to high",
+      "difficulty": "Moderate",
+      "waterEvery": "about every 5–7 days"
+    },
+    "humanVerified": false,
+    "effects": null
   },
   {
     "id": "ponytail-palm",
     "commonName": "Ponytail palm",
-    "names": ["Beaucarnea recurvata", "Nolina tuberculata"],
+    "names": [
+      "Beaucarnea recurvata",
+      "Nolina tuberculata"
+    ],
     "genusWide": false,
     "toxicToCats": false,
     "severe": false,
     "aspca": "Pony Tail | Beaucarnea recurvata | Agavaceae",
-    "care": { "light": "Bright light, some direct sun", "water": "Sparingly, when soil is fully dry", "humidity": "Low", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Bright light, some direct sun",
+      "water": "Sparingly, when soil is fully dry",
+      "humidity": "Low",
+      "difficulty": "Easy",
+      "waterEvery": "about every 2–4 weeks"
+    },
+    "humanVerified": false,
+    "effects": null
   },
   {
     "id": "haworthia",
     "commonName": "Haworthia (zebra plant)",
-    "names": ["Haworthia fasciata", "Haworthia margaritifera", "Haworthia subfasciata"],
+    "names": [
+      "Haworthia fasciata",
+      "Haworthia margaritifera",
+      "Haworthia subfasciata"
+    ],
     "genusWide": true,
     "toxicToCats": false,
     "severe": false,
     "aspca": "Haworthia | Haworthia species | Liliaceae",
     "note": "Some species were moved to Haworthiopsis; ASPCA doesn't list that name, so those results are NOT treated as safe.",
-    "care": { "light": "Bright indirect light", "water": "Sparingly, when soil is fully dry", "humidity": "Low", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Bright indirect light",
+      "water": "Sparingly, when soil is fully dry",
+      "humidity": "Low",
+      "difficulty": "Easy",
+      "waterEvery": "about every 2–3 weeks"
+    },
+    "humanVerified": false,
+    "effects": null
   },
   {
     "id": "christmas-cactus",
     "commonName": "Christmas cactus",
-    "names": ["Schlumbergera bridgesii", "Schlumbergera russelliana"],
+    "names": [
+      "Schlumbergera bridgesii",
+      "Schlumbergera russelliana"
+    ],
     "genusWide": false,
     "toxicToCats": false,
     "severe": false,
     "aspca": "Christmas Cactus | Schlumbergera bridgesii | Cactaceae",
-    "care": { "light": "Bright indirect light", "water": "When the top 2–3 cm of soil is dry", "humidity": "Medium", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Bright indirect light",
+      "water": "When the top 2–3 cm of soil is dry",
+      "humidity": "Medium",
+      "difficulty": "Easy",
+      "waterEvery": "about every 7–10 days"
+    },
+    "humanVerified": false,
+    "effects": null
   },
   {
     "id": "hoya",
     "commonName": "Wax plant (Hoya)",
-    "names": ["Hoya carnosa"],
+    "names": [
+      "Hoya carnosa"
+    ],
     "genusWide": false,
     "toxicToCats": false,
     "severe": false,
     "aspca": "Wax Plant | Hoya carnosa 'krinkle kurl' | Asclepiadaceae",
-    "care": { "light": "Bright indirect light", "water": "When soil is mostly dry", "humidity": "Medium", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Bright indirect light",
+      "water": "When soil is mostly dry",
+      "humidity": "Medium",
+      "difficulty": "Easy",
+      "waterEvery": "about every 10–14 days"
+    },
+    "humanVerified": false,
+    "effects": null
   },
   {
     "id": "african-violet",
     "commonName": "African violet",
-    "names": ["Saintpaulia ionantha", "Saintpaulia confusa"],
+    "names": [
+      "Saintpaulia ionantha",
+      "Saintpaulia confusa"
+    ],
     "genusWide": true,
     "toxicToCats": false,
     "severe": false,
     "aspca": "African Violet | Saintpaulia spp. | Gesneriaceae",
-    "care": { "light": "Bright indirect light", "water": "Keep lightly moist; water from below", "humidity": "Medium", "difficulty": "Moderate" },
-    "humanVerified": false
+    "care": {
+      "light": "Bright indirect light",
+      "water": "Keep lightly moist; water from below",
+      "humidity": "Medium",
+      "difficulty": "Moderate",
+      "waterEvery": "about every 5–7 days"
+    },
+    "humanVerified": false,
+    "effects": null
   },
   {
     "id": "cast-iron-plant",
     "commonName": "Cast iron plant",
-    "names": ["Aspidistra elatior"],
+    "names": [
+      "Aspidistra elatior"
+    ],
     "genusWide": false,
     "toxicToCats": false,
     "severe": false,
     "aspca": "Cast Iron Plant | Aspidistra elatior | Liliaceae",
-    "care": { "light": "Low to medium light", "water": "When the top half of soil is dry", "humidity": "Average", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Low to medium light",
+      "water": "When the top half of soil is dry",
+      "humidity": "Average",
+      "difficulty": "Easy",
+      "waterEvery": "about every 10–14 days"
+    },
+    "humanVerified": false,
+    "effects": null
   },
   {
     "id": "nerve-plant",
     "commonName": "Nerve plant",
-    "names": ["Fittonia verschaffeltii"],
+    "names": [
+      "Fittonia verschaffeltii"
+    ],
     "genusWide": false,
     "toxicToCats": false,
     "severe": false,
     "aspca": "Nerve Plant | Fittonia verschaffeltii | Acanthaceae",
-    "care": { "light": "Medium indirect light", "water": "Keep consistently moist", "humidity": "High", "difficulty": "Moderate" },
-    "humanVerified": false
+    "care": {
+      "light": "Medium indirect light",
+      "water": "Keep consistently moist",
+      "humidity": "High",
+      "difficulty": "Moderate",
+      "waterEvery": "about every 3–5 days"
+    },
+    "humanVerified": false,
+    "effects": null
   },
   {
     "id": "opuntia",
     "commonName": "Prickly pear / bunny ears cactus (Opuntia)",
-    "names": ["Opuntia microdasys", "Opuntia monacantha", "Opuntia ficus-indica"],
+    "names": [
+      "Opuntia microdasys",
+      "Opuntia monacantha",
+      "Opuntia ficus-indica"
+    ],
     "genusWide": true,
     "toxicToCats": false,
     "severe": false,
     "aspca": "Tree Cactus | Opuntia species | Cactaceae",
     "note": "Not poisonous, but the tiny barbed spines (glochids) can hurt a curious cat.",
-    "care": { "light": "Bright light, direct sun", "water": "Sparingly, when soil is fully dry; very little in winter", "humidity": "Low", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Bright light, direct sun",
+      "water": "Sparingly, when soil is fully dry; very little in winter",
+      "humidity": "Low",
+      "difficulty": "Easy",
+      "waterEvery": "about every 2–3 weeks in summer, every 4–6 weeks in winter"
+    },
+    "humanVerified": false,
+    "effects": null
   },
   {
     "id": "thimble-cactus",
     "commonName": "Thimble cactus",
-    "names": ["Mammillaria fragilis"],
+    "names": [
+      "Mammillaria fragilis"
+    ],
     "genusWide": false,
     "toxicToCats": false,
     "severe": false,
     "aspca": "Thimble Cactus | Mammillaria fragilis | Cactaceae",
-    "care": { "light": "Bright light, direct sun", "water": "Sparingly, when soil is fully dry", "humidity": "Low", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Bright light, direct sun",
+      "water": "Sparingly, when soil is fully dry",
+      "humidity": "Low",
+      "difficulty": "Easy",
+      "waterEvery": "about every 2–3 weeks in summer, every 4–6 weeks in winter"
+    },
+    "humanVerified": false,
+    "effects": null
   },
   {
     "id": "old-man-cactus",
     "commonName": "Old man cactus",
-    "names": ["Cephalocereus senilis"],
+    "names": [
+      "Cephalocereus senilis"
+    ],
     "genusWide": false,
     "toxicToCats": false,
     "severe": false,
     "aspca": "Old Man Cactus | Cephalocereus senilis | Cactaceae",
-    "care": { "light": "Bright light, direct sun", "water": "Sparingly, when soil is fully dry", "humidity": "Low", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Bright light, direct sun",
+      "water": "Sparingly, when soil is fully dry",
+      "humidity": "Low",
+      "difficulty": "Easy",
+      "waterEvery": "about every 2–3 weeks in summer, almost never in winter"
+    },
+    "humanVerified": false,
+    "effects": null
   },
   {
     "id": "mistletoe-cactus",
     "commonName": "Mistletoe cactus",
-    "names": ["Rhipsalis cassutha"],
+    "names": [
+      "Rhipsalis cassutha"
+    ],
     "genusWide": false,
     "toxicToCats": false,
     "severe": false,
     "aspca": "Mistletoe Cactus | Rhipsalis cassutha | Cactaceae",
     "note": "ID services may return the newer name Rhipsalis baccifera; it is deliberately NOT mapped as safe because ASPCA doesn't list that name.",
-    "care": { "light": "Bright indirect light", "water": "When the top 2–3 cm of soil is dry", "humidity": "Medium", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Bright indirect light",
+      "water": "When the top 2–3 cm of soil is dry",
+      "humidity": "Medium",
+      "difficulty": "Easy",
+      "waterEvery": "about every 7–10 days"
+    },
+    "humanVerified": false,
+    "effects": null
   },
   {
     "id": "easter-lily-cactus",
     "commonName": "Easter lily cactus",
-    "names": ["Echinopsis multiplex"],
+    "names": [
+      "Echinopsis multiplex"
+    ],
     "genusWide": false,
     "toxicToCats": false,
     "severe": false,
     "aspca": "Easter Lily Cactus | Echinopsis multiplex | Cactaceae",
-    "care": { "light": "Bright light, direct sun", "water": "Sparingly, when soil is fully dry", "humidity": "Low", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Bright light, direct sun",
+      "water": "Sparingly, when soil is fully dry",
+      "humidity": "Low",
+      "difficulty": "Easy",
+      "waterEvery": "about every 2–3 weeks in summer, every 4–6 weeks in winter"
+    },
+    "humanVerified": false,
+    "effects": null
   },
   {
     "id": "golden-barrel-cactus",
     "commonName": "Golden barrel cactus",
-    "names": ["Kroenleinia grusonii", "Echinocactus grusonii"],
+    "names": [
+      "Kroenleinia grusonii",
+      "Echinocactus grusonii"
+    ],
     "genusWide": false,
     "toxicToCats": null,
     "severe": false,
     "aspca": null,
     "note": "Not on the ASPCA list. Its long, sharp spines are a physical hazard for cats.",
-    "care": { "light": "Bright light, direct sun", "water": "Sparingly, when soil is fully dry; almost none in winter", "humidity": "Low", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Bright light, direct sun",
+      "water": "Sparingly, when soil is fully dry; almost none in winter",
+      "humidity": "Low",
+      "difficulty": "Easy",
+      "waterEvery": "about every 2–3 weeks in summer, almost never in winter"
+    },
+    "humanVerified": false,
+    "effects": null
   },
   {
     "id": "rat-tail-cactus",
     "commonName": "Rat tail cactus",
-    "names": ["Aporocactus flagelliformis", "Disocactus flagelliformis"],
+    "names": [
+      "Aporocactus flagelliformis",
+      "Disocactus flagelliformis"
+    ],
     "genusWide": false,
     "toxicToCats": null,
     "severe": false,
     "aspca": null,
     "note": "Not on the ASPCA list.",
-    "care": { "light": "Bright light, some direct sun", "water": "When soil is dry; less in winter", "humidity": "Low", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Bright light, some direct sun",
+      "water": "When soil is dry; less in winter",
+      "humidity": "Low",
+      "difficulty": "Easy",
+      "waterEvery": "about every 7–10 days in summer, every 3–4 weeks in winter"
+    },
+    "humanVerified": false,
+    "effects": null
   },
   {
     "id": "peanut-cactus",
     "commonName": "Peanut cactus",
-    "names": ["Chamaecereus silvestrii", "Echinopsis chamaecereus"],
+    "names": [
+      "Chamaecereus silvestrii",
+      "Echinopsis chamaecereus"
+    ],
     "genusWide": false,
     "toxicToCats": null,
     "severe": false,
     "aspca": null,
     "note": "Not on the ASPCA list.",
-    "care": { "light": "Bright light, direct sun", "water": "Sparingly, when soil is fully dry", "humidity": "Low", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Bright light, direct sun",
+      "water": "Sparingly, when soil is fully dry",
+      "humidity": "Low",
+      "difficulty": "Easy",
+      "waterEvery": "about every 2 weeks in summer, almost never in winter"
+    },
+    "humanVerified": false,
+    "effects": null
   },
   {
     "id": "zz-plant",
     "commonName": "ZZ plant",
-    "names": ["Zamioculcas zamiifolia"],
+    "names": [
+      "Zamioculcas zamiifolia"
+    ],
     "genusWide": false,
     "toxicToCats": null,
     "severe": false,
     "aspca": null,
     "note": "Not on the ASPCA list, but it is in the same plant family (Araceae) as many toxic plants.",
-    "care": { "light": "Low to bright indirect light", "water": "Sparingly, when soil is fully dry", "humidity": "Low is fine", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Low to bright indirect light",
+      "water": "Sparingly, when soil is fully dry",
+      "humidity": "Low is fine",
+      "difficulty": "Easy",
+      "waterEvery": "about every 2–3 weeks"
+    },
+    "humanVerified": false,
+    "effects": null
   },
   {
     "id": "chinese-money-plant",
     "commonName": "Chinese money plant",
-    "names": ["Pilea peperomioides"],
+    "names": [
+      "Pilea peperomioides"
+    ],
     "genusWide": false,
     "toxicToCats": null,
     "severe": false,
     "aspca": null,
     "note": "Not on the ASPCA list (other Pilea species are listed as non-toxic, but not this one).",
-    "care": { "light": "Bright indirect light", "water": "When the top half of soil is dry", "humidity": "Average", "difficulty": "Easy" },
-    "humanVerified": false
+    "care": {
+      "light": "Bright indirect light",
+      "water": "When the top half of soil is dry",
+      "humidity": "Average",
+      "difficulty": "Easy",
+      "waterEvery": "about every 7–10 days"
+    },
+    "humanVerified": false,
+    "effects": null
   }
 ]

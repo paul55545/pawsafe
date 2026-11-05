@@ -32,6 +32,19 @@ describe("dataset integrity", () => {
     for (const g of safeGenera) expect(toxicGenera.has(g), g).toBe(false);
   });
 
+  it("every toxic plant has ASPCA symptoms; non-toxic ones don't", () => {
+    for (const p of plants) {
+      if (p.toxicToCats === true) {
+        expect(p.effects?.clinicalSigns, p.id).toBeTruthy();
+        expect(p.effects?.aspcaUrl, p.id).toMatch(/^https:\/\/www\.aspca\.org\//);
+      } else expect(p.effects, p.id).toBeNull();
+    }
+  });
+
+  it("every plant with care info has a watering interval", () => {
+    for (const p of plants) if (p.care) expect(p.care.waterEvery, p.id).toBeTruthy();
+  });
+
   it("lilies are flagged severe", () => {
     expect(plants.find((p) => p.id === "lily")?.severe).toBe(true);
     expect(plants.find((p) => p.id === "day-lily")?.severe).toBe(true);
@@ -52,6 +65,12 @@ describe("verdict: toxic", () => {
     expect(v.level).toBe("toxic");
     expect(v.reason).toBe("confident-toxic");
     expect(v.plant?.confidence).toBeCloseTo(0.9959, 3);
+    expect(v.effects?.toxicPrinciples).toBe("Insoluble calcium oxalates");
+  });
+
+  it("possible toxic lookalike -> shows the lookalike's symptoms", () => {
+    const v = evaluate([c("Chlorophytum comosum", 0.75), c("Dracaena trifasciata", 0.15)]);
+    expect(v.effects?.plantName).toMatch(/Snake plant/);
   });
 
   it("any lily species triggers the severe warning", () => {
