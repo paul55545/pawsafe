@@ -6,9 +6,12 @@ import { useEffect, useRef, useState } from "react";
 import {
   clearHistory,
   loadHistory,
+  careRank,
+  MAX_SAFETY_RANK,
   rankByCare,
   rankBySafety,
   safetyLabel,
+  safetyRank,
   uniquePlants,
   type ScanRecord,
 } from "@/lib/history";
@@ -29,6 +32,8 @@ const PREVIEW: ScanRecord[] = [
   ["Golden pothos", "Epipremnum aureum", "Araceae", "confident-toxic", "toxic", "Easy", 2],
   ["Spider plant", "Chlorophytum comosum", "Asparagaceae", "confident-safe", "safe", "Easy", 3],
   ["Calathea", "Calathea insignis", "Marantaceae", "pending-review", "unknown", "Hard", 4],
+  ["Monstera (Monstera adansonii)", "Monstera adansonii", "Araceae", "possible-toxic", "unknown", "Easy", 5],
+  ["Boston fern", "Nephrolepis exaltata", "Nephrolepidaceae", "low-confidence", "unknown", "Moderate", 6],
 ].map(([commonName, scientificName, family, reason, level, difficulty, h]) => ({
   id: String(h),
   at: Date.now() - Number(h) * 3_600_000,
@@ -61,7 +66,15 @@ const BADGE = {
   severe: "bg-red-700 text-white",
 } as const;
 
-function PlantRow({ r, rank, showTime }: { r: ScanRecord; rank?: number; showTime: boolean }) {
+/** Highlighter colour from the plant's actual rating (not just its position), so a toxic plant is never
+ *  marked green even if it happens to be first. Hue 120 = green ... 0 = red; null = neutral grey. */
+function highlightHue(r: ScanRecord, tab: Tab): number | null {
+  if (tab === "safest") return Math.round(120 - (Math.min(safetyRank(r), MAX_SAFETY_RANK) / MAX_SAFETY_RANK) * 120);
+  if (tab === "easiest") return r.difficulty ? [120, 55, 0][careRank(r)] : null;
+  return null;
+}
+
+function PlantRow({ r, rank, showTime, hue }: { r: ScanRecord; rank?: number; showTime: boolean; hue?: number | null }) {
   return (
     <li className="flex items-center gap-3 py-3">
       {rank !== undefined && (
@@ -76,7 +89,18 @@ function PlantRow({ r, rank, showTime }: { r: ScanRecord; rank?: number; showTim
         </span>
       )}
       <div className="min-w-0 flex-1">
-        <p className="truncate font-semibold">{r.commonName}</p>
+        <p className="truncate font-semibold">
+          {hue !== undefined ? (
+            <mark
+              className={`highlighter ${hue === null ? "is-neutral" : ""}`}
+              style={hue === null ? undefined : ({ "--hl-hue": hue } as React.CSSProperties)}
+            >
+              {r.commonName}
+            </mark>
+          ) : (
+            r.commonName
+          )}
+        </p>
         <p className="truncate text-xs italic text-muted">{r.scientificName}</p>
         <div className="mt-1 flex flex-wrap gap-1 text-xs">
           <span className={`rounded-full px-2 py-0.5 font-medium ${BADGE[r.severe ? "severe" : r.level]}`}>
@@ -107,10 +131,15 @@ export default function Menu() {
     setOpen(true);
   }
 
-  // #preview-recent opens the panel with example plants (design check / demo video only)
+  // #preview-recent (or #preview-safest / #preview-easiest) opens the panel with example plants
+  // (design check / demo video only; nothing is saved)
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- one-off, only for the preview link
-    if (location.hash === "#preview-recent") openMenu("recent", PREVIEW);
+    const start = { "#preview-recent": "recent", "#preview-safest": "safest", "#preview-easiest": "easiest" }[location.hash];
+    if (start) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect -- one-off, only for the preview link
+      setTab(start as Tab);
+      openMenu("recent", PREVIEW);
+    }
   }, []);
 
   // Close with Escape, stop the page behind from scrolling, and move focus into the panel
@@ -212,7 +241,13 @@ export default function Menu() {
                 )}
                 <ul className="mt-1 min-h-0 flex-1 divide-y divide-line overflow-y-auto">
                   {list.map((r, i) => (
-                    <PlantRow key={r.id} r={r} rank={tab === "recent" ? undefined : i + 1} showTime={tab === "recent"} />
+                    <PlantRow
+                      key={r.id}
+                      r={r}
+                      rank={tab === "recent" ? undefined : i + 1}
+                      showTime={tab === "recent"}
+                      hue={tab === "recent" ? undefined : highlightHue(r, tab)}
+                    />
                   ))}
                 </ul>
                 <div className="border-t border-line pt-3 text-sm">

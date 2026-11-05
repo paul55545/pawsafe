@@ -87,6 +87,7 @@ const SAFETY_ORDER: Record<VerdictReason, number> = {
   "confident-toxic": 5,
 };
 export const safetyRank = (r: ScanRecord) => SAFETY_ORDER[r.reason] + (r.severe ? 1 : 0);
+export const MAX_SAFETY_RANK = 6; // confident toxic + severe (lilies)
 
 const CARE_ORDER = { Easy: 0, Moderate: 1, Hard: 2 } as const;
 export const careRank = (r: ScanRecord) => (r.difficulty ? CARE_ORDER[r.difficulty] : 3); // unknown care last

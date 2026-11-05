@@ -287,6 +287,43 @@ body {
   background: var(--leaf-wash);
 }
 
+/* ---------- Highlighter mark (ranking colours) ----------
+   A see-through marker stroke over the lower part of the plant name, slightly uneven at the ends like a
+   real highlighter. --hl-hue goes from 120 (green, best) to 0 (red, worst). */
+.highlighter {
+  --hl-hue: 120;
+  --hl-sat: 85%;
+  --hl-alpha: 0.32;
+  --hl-light: 50%;
+  color: inherit;
+  padding: 0 0.25em;
+  margin: 0 -0.15em;
+  border-radius: 0.6em 0.25em 0.7em 0.3em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  background:
+    linear-gradient(
+      100deg,
+      hsl(var(--hl-hue) var(--hl-sat) var(--hl-light) / 0) 0%,
+      hsl(var(--hl-hue) var(--hl-sat) var(--hl-light) / var(--hl-alpha)) 3%,
+      hsl(var(--hl-hue) var(--hl-sat) var(--hl-light) / calc(var(--hl-alpha) * 0.8)) 50%,
+      hsl(var(--hl-hue) var(--hl-sat) var(--hl-light) / var(--hl-alpha)) 96%,
+      hsl(var(--hl-hue) var(--hl-sat) var(--hl-light) / 0) 100%
+    )
+    0 62% / 100% 62% no-repeat;
+}
+.highlighter.is-neutral {
+  --hl-sat: 0%;
+  --hl-alpha: 0.22;
+}
+@media (prefers-color-scheme: dark) {
+  .highlighter {
+    --hl-sat: 75%;
+    --hl-light: 62%;
+    --hl-alpha: 0.27; /* lighter touch on the dark page, so it reads as a marker, not a solid bar */
+  }
+}
+
 /* Leaf-cut corners for the verdict banner */
 .leaf-corners {
   border-radius: 22px 4px 22px 4px;
